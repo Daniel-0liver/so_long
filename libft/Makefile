@@ -24,7 +24,7 @@ BONUS_OBJ = $(BONUS_SRC:.c=.o)
 # 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
 # 	gcc -nostartfiles -shared -o libft.so $(OBJ)
 
-all: $(NAME)
+all: $(NAME) bonus
 
 $(NAME) : $(SRC) 
 	@$(CC) $(FLAGS) -c $(SRC)
