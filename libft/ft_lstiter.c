@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2021/12/06 02:23:02 by dateixei          #+#    #+#             */
+/*   Updated: 2021/12/06 02:27:56 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+// Iterates the list ’lst’ and applies the function
+// ’f’ to the content of each element.
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	mlx_init();
-	
-	return (0);
+	if (!f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

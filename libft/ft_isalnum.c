@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2021/10/18 17:23:28 by dateixei          #+#    #+#             */
+/*   Updated: 2021/12/07 01:15:45 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+// Return 0 if the char isn't alphamumeric and 1 if is.
+
+int	ft_isalnum(int c)
 {
-	mlx_init();
-	
-	return (0);
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c
+			<= 'z') || (c >= '0' && c <= '9'))
+	{
+		return (1);
+	}
+	else
+		return (0);
 }

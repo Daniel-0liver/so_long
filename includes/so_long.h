@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
+/*   Updated: 2022/04/12 15:08:56 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-int main(int argc, char **argv)
-{
-	mlx_init();
-	
-	return (0);
-}
+# include <mlx.h>
+# include <mlx_int.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdarg.h>
+# include <fcntl.h>
+# include <errno.h>
+# include "libft.h"
+
+# endif

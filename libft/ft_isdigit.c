@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2021/10/18 16:53:05 by dateixei          #+#    #+#             */
+/*   Updated: 2021/12/07 01:18:57 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+// isdigit() checks for a digit (0 through 9).
+
+int	ft_isdigit(int c)
 {
-	mlx_init();
-	
-	return (0);
+	if ((c >= '0' && c <= '9'))
+	{
+		return (1);
+	}
+	else
+		return (0);
 }

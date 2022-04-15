@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2021/11/19 23:24:40 by dateixei          #+#    #+#             */
+/*   Updated: 2021/12/07 01:12:46 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+// The bzero() function erases the data in the n bytes of the 
+// memory starting at the location pointed to by s, by
+// writing zeros (bytes containing '\0') to that area.
+
+void	ft_bzero(void *s, size_t n)
 {
-	mlx_init();
-	
-	return (0);
+	ft_memset(s, 0, n);
 }
+
+// int main() {
+// 	char *test = {"testando"};
+// 	printf("%s\n", test);
+// 	ft_bzero(test, 2);
+// 	printf("%s\n", test);
+// 	return 0;
+// }

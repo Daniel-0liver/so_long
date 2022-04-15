@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2021/10/20 01:22:44 by dateixei          #+#    #+#             */
+/*   Updated: 2021/12/07 01:18:24 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+// isascii() checks whether c is a 7-bit unsigned char value that
+// fits into the ASCII character set.
+
+int	ft_isascii(int c)
 {
-	mlx_init();
-	
-	return (0);
+	if ((c >= 0 && c <= 127))
+	{
+		return (1);
+	}
+	else
+		return (0);
 }

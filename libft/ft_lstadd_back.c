@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2021/12/05 23:18:53 by dateixei          #+#    #+#             */
+/*   Updated: 2021/12/07 01:20:59 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+// Adds the element ’new’ at the end of the list.
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	mlx_init();
-	
-	return (0);
+	t_list	*back_list;
+
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	back_list = ft_lstlast(*lst);
+	back_list->next = new;
 }

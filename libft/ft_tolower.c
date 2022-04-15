@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/12 14:57:51 by dateixei         ###   ########.fr       */
+/*   Created: 2021/11/22 02:02:19 by dateixei          #+#    #+#             */
+/*   Updated: 2021/12/07 01:35:24 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+// If  c is an uppercase letter, tolower() returns its lowercase 
+// equivalent, if a lowercase representation exists in the current 
+// locale.  Otherwise, it returns c.
+
+int	ft_tolower(int c)
 {
-	mlx_init();
-	
-	return (0);
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }
