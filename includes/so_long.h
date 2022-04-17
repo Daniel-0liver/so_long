@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/16 19:14:40 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/17 01:29:53 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		close_win(int keycode, t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);
 int		mouse_hook(int x, int y, t_vars *vars);
+int		render_next_frame(t_vars *vars);
 
 # endif
