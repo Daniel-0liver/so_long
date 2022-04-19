@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/17 01:29:53 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/18 20:56:23 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include <mlx.h>
+# include <mlx_int.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -21,6 +22,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <math.h>
 # include "libft.h"
 
 typedef struct	s_data {
