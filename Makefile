@@ -9,7 +9,8 @@ LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
 SRC			=	src/so_long.c \
 				src/my_mlx_pixel_put.c \
-				src/events.c
+				src/events.c \
+				src/game_events.c
 
 all:		$(MLX) $(LFT) obj $(NAME)
 
