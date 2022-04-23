@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 15:54:01 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/22 00:46:36 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/23 15:19:15 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	mouse_hook(int x, int y, t_game *game)
 }
 int	close_win(int keycode, t_game *game)
 {
+	printf("Worked");
 	if (keycode == 65307)
-		mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_window(game->mlx, game->win->win_ptr);
 	return (0);
 }

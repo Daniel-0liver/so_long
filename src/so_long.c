@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/22 00:52:06 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/23 15:56:55 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(void)
 	t_game	game;
 	
 	game.mlx = mlx_init();
-	window_init(&game);
+	game_init(&game);
+	// mlx_put_image_to_window(game.mlx, game.win->win_ptr, game.data->img, 10, 10);
+	mlx_key_hook(game.win->win_ptr, close_win, &game);
 	mlx_loop(game.mlx);
 }
