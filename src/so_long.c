@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/24 03:42:14 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/24 13:22:08 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,17 @@
 
 int	player_loop(t_game *game)
 {
+	int i = 0;
 	while (game->player->player_pos_x <= 500)
 	{
 		game->player->player_pos_x += 10;
 		mlx_destroy_image(game->mlx, game->player->player_img);
 		game->player->player_img = mlx_xpm_file_to_image(game->mlx, game->player->player_img_path, &game->win->width, &game->win->height);
 		mlx_put_image_to_window(game->mlx, game->win->win_ptr, game->player->player_img, game->player->player_pos_x, game->player->player_pos_y);
+		printf("Its inside, %d times", i);
+		i++;
 	}
+	printf("Its outside.");
 	return 0;
 }
 
@@ -42,7 +46,8 @@ int	main(void)
 	game.mlx = mlx_init();
 	game_init(&game);
 	mlx_put_image_to_window(game.mlx, game.win->win_ptr, game.player->player_img, game.player->player_pos_x, game.player->player_pos_y);
-	// mlx_key_hook(game.win->win_ptr, key_hook, &game);
-	mlx_loop_hook(game.mlx, player_loop, &game);
+	// mlx_loop_hook(game.mlx, player_loop, &game);
+	mlx_key_hook(game.win->win_ptr, key_hook, &game);
+	mlx_hook(game.win->win_ptr, DestroyNotify, NoEventMask, &close_win, &game);
 	mlx_loop(game.mlx);
 }

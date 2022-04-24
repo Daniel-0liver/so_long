@@ -10,7 +10,8 @@ OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
 SRC			=	src/so_long.c \
 				src/my_mlx_pixel_put.c \
 				src/events.c \
-				src/game_events.c
+				src/game_events.c \
+				src/game_close_events.c
 
 all:		$(MLX) $(LFT) obj $(NAME)
 

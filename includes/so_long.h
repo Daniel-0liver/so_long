@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/24 03:10:45 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/24 15:12:46 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct	s_game {
 }				t_game;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		close_win(int keycode, t_game *game);
+int		close_win(t_game *game);
 int		key_hook(int keycode, t_game *game);
 int		mouse_hook(int x, int y, t_game *game);
 int		render_next_frame(t_game *game);
@@ -68,5 +68,8 @@ void	game_init(t_game *game);
 void	window_init(t_game *game);
 void	pixel_init(t_game *game);
 void	player_init(t_game *game);
+
+//Game close events
+void	destroy_images(t_game *game);
 
 # endif
