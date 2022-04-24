@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/23 15:40:05 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/24 03:10:45 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+typedef struct s_player {
+	int		player_pos_x;
+	int		player_pos_y;
+	char	*player_img_path;
+	void	*player_img;
+}				t_player;
+
+
 typedef struct	s_win {
 	void	*win_ptr;
 	int		width;
@@ -44,9 +52,10 @@ typedef struct	s_win {
 }				t_win;
 
 typedef struct	s_game {
-	void	*mlx;
-	t_data	*data;
-	t_win	*win;
+	void		*mlx;
+	t_data		*data;
+	t_win		*win;
+	t_player	*player;
 }				t_game;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -54,8 +63,10 @@ int		close_win(int keycode, t_game *game);
 int		key_hook(int keycode, t_game *game);
 int		mouse_hook(int x, int y, t_game *game);
 int		render_next_frame(t_game *game);
+void	game_memory_allocation(t_game *game);
 void	game_init(t_game *game);
 void	window_init(t_game *game);
 void	pixel_init(t_game *game);
+void	player_init(t_game *game);
 
 # endif
