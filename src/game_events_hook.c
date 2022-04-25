@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   game_events_hook.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/16 15:54:01 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/24 13:21:03 by dateixei         ###   ########.fr       */
+/*   Created: 2022/04/25 01:22:57 by dateixei          #+#    #+#             */
+/*   Updated: 2022/04/25 01:23:00 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "so_long.h"
 
@@ -21,9 +22,3 @@ int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-int	close_win(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->win->win_ptr);
-	game->win->win_ptr = NULL;
-	exit(0);
-}
