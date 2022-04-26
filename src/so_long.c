@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/24 13:22:08 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/26 22:13:32 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	main(void)
 	game_memory_allocation(&game);
 	game.mlx = mlx_init();
 	game_init(&game);
-	mlx_put_image_to_window(game.mlx, game.win->win_ptr, game.player->player_img, game.player->player_pos_x, game.player->player_pos_y);
+	// mlx_put_image_to_window(game.mlx, game.win->win_ptr, game.player->player_img, game.player->player_pos_x, game.player->player_pos_y);
 	// mlx_loop_hook(game.mlx, player_loop, &game);
-	mlx_key_hook(game.win->win_ptr, key_hook, &game);
-	mlx_hook(game.win->win_ptr, DestroyNotify, NoEventMask, &close_win, &game);
+	// mlx_key_hook(game.win->win_ptr, key_hook, &game);
+	get_hooks(&game);
 	mlx_loop(game.mlx);
 }
