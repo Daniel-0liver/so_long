@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/27 00:21:20 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/28 01:14:41 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # include <math.h>
 # include "libft.h"
 
+typedef struct	s_posit {
+	int	x;
+	int	y;
+}				t_posit;
 
 typedef struct	s_data {
 	void	*img;
@@ -38,12 +42,10 @@ typedef struct	s_data {
 }				t_data;
 
 typedef struct s_player {
-	int		player_pos_x;
-	int		player_pos_y;
+	t_posit	*player_posit;
 	char	*player_img_path;
 	void	*player_img;
 }				t_player;
-
 
 typedef struct	s_win {
 	void	*win_ptr;
@@ -51,12 +53,29 @@ typedef struct	s_win {
 	int		height;
 }				t_win;
 
+typedef struct	s_map {
+	t_posit		*map_posit;
+	int			map_x;
+	int			map_y;
+	int			num_c;
+	int			num_e;
+	int			num_p;
+	char		*map_path;
+	void		*map_img;
+	char		*floor_path;
+	void		*floor_img;
+	char		*wall_path;
+	void		*wall_img;
+}				t_map;
+
 typedef struct	s_game {
 	void		*mlx;
 	t_data		*data;
 	t_win		*win;
 	t_player	*player;
 }				t_game;
+
+
 
 // Functions examples
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);

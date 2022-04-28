@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/25 01:21:43 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/04/27 21:09:35 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	close_win(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win->win_ptr);
 	game->win->win_ptr = NULL;
+	destroy_images(game);
 	exit(0);
 }
