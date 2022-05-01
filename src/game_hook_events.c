@@ -6,11 +6,11 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:36:03 by dateixei          #+#    #+#             */
-/*   Updated: 2022/04/28 01:23:31 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/01 02:30:45 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 
 int	key_hook(int keycode, t_game *game)
@@ -34,5 +34,4 @@ void	get_hooks(t_game *game)
 	mlx_hook(game->win->win_ptr, DestroyNotify, NoEventMask, &close_win, &game);
 	mlx_hook(game->win->win_ptr, KeyPress, KeyPressMask, &key_hook, game);
 	mlx_loop_hook(game->mlx, &win_render, game);
-	return ;
 }
