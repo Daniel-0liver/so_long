@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/04 21:36:48 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/05 01:47:45 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	*map_read(t_game *game)
 {
-	//Justo to do git
+	
 }
