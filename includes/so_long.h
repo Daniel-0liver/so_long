@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/01 02:33:41 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:44:38 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <math.h>
-# include "libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_posit {
 	int	x;
@@ -69,7 +69,7 @@ typedef struct	s_map {
 }				t_map;
 
 typedef struct	s_game {
-	void		mlx;
+	void		*mlx;
 	t_data		data;
 	t_win		win;
 	t_player	player;
