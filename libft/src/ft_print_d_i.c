@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_print_d_i.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 16:59:24 by dateixei          #+#    #+#             */
-/*   Updated: 2021/12/05 17:01:46 by dateixei         ###   ########.fr       */
+/*   Created: 2022/04/03 03:00:04 by dateixei          #+#    #+#             */
+/*   Updated: 2022/04/07 20:52:43 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-// Outputs the character ’c’ to the given file
-// descriptor.
-
-void	ft_putchar_fd(char c, int fd)
+int	ft_print_d_i(int d)
 {
-	write(fd, &c, 1);
+	ft_putnbr_fd(d, 1);
+	return (ft_check_lenght_int(d));
 }

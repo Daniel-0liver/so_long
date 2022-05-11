@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 01:51:47 by dateixei          #+#    #+#             */
-/*   Updated: 2021/12/07 01:35:59 by dateixei         ###   ########.fr       */
+/*   Created: 2022/04/03 03:01:56 by dateixei          #+#    #+#             */
+/*   Updated: 2022/04/03 03:02:50 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-// If  c is a lowercase letter, toupper() returns its uppercase 
-// equivalent, if an uppercase representation exists in the 
-// current locale.  Otherwise, it returns c.
-
-int	ft_toupper(int c)
+int	ft_print_c(char c)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	int	lenght;
+
+	lenght = 1;
+	write(1, &c, sizeof(char));
+	return (lenght);
 }

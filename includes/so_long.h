@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/09 21:44:38 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/12 00:15:54 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <math.h>
-# include "../libft/libft.h"
+# include "../libft/include/libft.h"
 
 typedef struct	s_posit {
 	int	x;
@@ -60,6 +60,7 @@ typedef struct	s_map {
 	int			num_c;
 	int			num_e;
 	int			num_p;
+	char		**map_grid;
 	char		*map_path;
 	void		*map_img;
 	char		*floor_path;
@@ -73,6 +74,7 @@ typedef struct	s_game {
 	t_data		data;
 	t_win		win;
 	t_player	player;
+	t_map		map;
 }				t_game;
 
 
@@ -92,10 +94,12 @@ void		game_init(t_game *game);
 void		window_init(t_game *game);
 void		pixel_init(t_game *game);
 void		player_init(t_game *game);
+void		map_init(t_game *game);
 
 //Game close events
 int			close_win(t_game *game);
 void		destroy_images(t_game *game);
+void		error_event(char *error_msg, int breakpoint, t_game *game);
 
 // Game render events
 static void	map_render(t_game *game);
@@ -108,4 +112,6 @@ void		player_move_left(t_game *game);
 void		player_move_up(t_game *game);
 void		player_move_down(t_game *game);
 
+// Map events
+void		map_read(t_game *game);
 # endif

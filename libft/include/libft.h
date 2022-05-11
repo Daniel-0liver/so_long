@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:20:35 by dateixei          #+#    #+#             */
-/*   Updated: 2021/12/10 23:10:14 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/12 00:08:59 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <ctype.h>
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 // Struct
 typedef struct s_list

@@ -1,3 +1,6 @@
+GREEN		= \033[0;32m
+RED			= \033[0;31m
+RESET		= \033[0m
 
 NAME		=	so_long
 CC			=	gcc
@@ -24,28 +27,30 @@ $(NAME):	$(OBJ)
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
 			@make -s -C mlx
-			@echo " [ OK ] | Minilibx ready!"
+			@echo " [ $(GREEN)OK$(RESET) ] | Minilibx ready!"
 
 $(LFT):		
 			@echo " [ .. ] | Compiling libft.."
 			@make -s -C libft
-			@echo " [ OK ] | Libft ready!"
+			@echo " [ $(GREEN)OK$(RESET) ] | Libft ready!"
 
 obj:
 			@mkdir -p obj
 
 obj/%.o:	src/%.c
+			@echo "$@ $(GREEN)created$(RESET)"
 			@$(CC) $(FLAGS) $(INC) -o $@ -c $<
 
 clean:
 			@make -s $@ -C libft
 			@rm -rf $(OBJ) obj
-			@echo "object files removed."
+			@echo "Object files removed."
 
 fclean:		clean
 			@make -s $@ -C libft
+			@make -s $< -C mlx
 			@rm -rf $(NAME)
-			@echo "binary file removed."
+			@echo "Binary file removed."
 
 re:			fclean all
 

@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_valid_events.c                                 :+:      :+:    :+:   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/12 00:21:27 by dateixei         ###   ########.fr       */
+/*   Created: 2022/04/04 01:57:58 by dateixei          #+#    #+#             */
+/*   Updated: 2022/04/07 20:53:17 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "ft_printf.h"
 
-void	map_read(t_game *game)
+int	ft_print_x(unsigned int d, char c)
 {
-	int		fd;
-	int		i;
-	
-	fd = open(game->map.map_path, O_RDONLY);
-	if (fd < 0)
-		error_event("Error while opening file", 1, game);
-	i = 0;
-	while (get_next_line(fd))
-	{
-		game->map.map_grid[i] = get_next_line(fd);
-		ft_printf("test");
-		i++;
-	}
+	int		lenght;
+
+	if (!d)
+		return (write(1, "0", sizeof(char) * 1));
+	lenght = ft_decimal_to_hexadecimal(d, 0, c);
+	c = c + 1;
+	return (lenght);
 }

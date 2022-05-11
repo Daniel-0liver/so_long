@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 15:47:53 by dateixei          #+#    #+#             */
-/*   Updated: 2021/12/07 01:17:34 by dateixei         ###   ########.fr       */
+/*   Created: 2021/11/22 01:51:47 by dateixei          #+#    #+#             */
+/*   Updated: 2022/05/08 14:24:19 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// isalpha() checks  for an alphabetic character; in the standard "C" locale, 
-// it is equivalent to (isupper(c) || is‐
-// lower(c)).  In some locales, there may be additional characters for  which  
-// isalpha()  is  true—letters
-// which are neither uppercase nor lowercase.
+// If  c is a lowercase letter, toupper() returns its uppercase 
+// equivalent, if an uppercase representation exists in the 
+// current locale.  Otherwise, it returns c.
 
-int	ft_isalpha(int c)
+int	ft_toupper(int c)
 {
-	if (((c >= 'A' && c <= 'Z') || (c
-				>= 'a' && c <= 'z')))
-	{
-		return (1);
-	}
-	else
-		return (0);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }

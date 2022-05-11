@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/01 02:30:07 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/12 00:17:04 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,26 @@ void	game_init(t_game *game)
 
 void	game_memory_allocation(t_game *game)
 {
-	game->data = ft_calloc(1, sizeof(t_data));
-	game->win = ft_calloc(1, sizeof(t_win));
-	game->player = ft_calloc(1, sizeof(t_player));
-	game->player->player_posit = ft_calloc(1, sizeof(t_posit));
+	game->player.player_posit = ft_calloc(1, sizeof(t_posit));
 }
 
 void	window_init(t_game *game)
 {
-	game->win->height = 500;
-	game->win->width = 500;
-	game->win->win_ptr = mlx_new_window(game->mlx, game->win->height, game->win->width, "teste");
+	game->win.height = 500;
+	game->win.width = 500;
+	game->win.win_ptr = mlx_new_window(game->mlx, game->win.height, game->win.width, "teste");
 }
 
 void	player_init(t_game *game)
 {
-	game->player->player_img_path = "./src/player.xpm";
-	game->player->player_posit->x = 10;
-	game->player->player_posit->y = 10;
-	game->player->player_img = mlx_xpm_file_to_image(game->mlx, game->player->player_img_path, &game->win->width, &game->win->height);
+	game->player.player_img_path = "./src/player.xpm";
+	game->player.player_posit->x = 10;
+	game->player.player_posit->y = 10;
+	game->player.player_img = mlx_xpm_file_to_image(game->mlx, game->player.player_img_path, &game->win.width, &game->win.height);
+}
+
+void	map_init(t_game *game)
+{
+	game->map.map_path = "./src/map.ber";
+	map_read(game);
 }
