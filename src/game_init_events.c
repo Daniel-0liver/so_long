@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/12 00:17:04 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:56:19 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	game_init(t_game *game)
 {
 	window_init(game);
 	player_init(game);
+	map_init(game);
 }
 
 void	game_memory_allocation(t_game *game)
