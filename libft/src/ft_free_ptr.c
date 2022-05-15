@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_free_ptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 18:23:47 by dateixei         ###   ########.fr       */
+/*   Created: 2022/05/15 13:10:32 by dateixei          #+#    #+#             */
+/*   Updated: 2022/05/15 14:03:14 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_free_ptr(void	**pointer)
 {
-	t_game	game;
-	
-	game_memory_allocation(&game);
-	game.mlx = mlx_init();
-	game_init(&game);
-	get_hooks(&game);
-	mlx_loop(game.mlx);
+	free(*pointer);
+	*pointer = NULL;
 }

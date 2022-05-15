@@ -6,13 +6,13 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 01:34:53 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/12 00:12:05 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:14:48 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 50
+# define BUFFER_SIZE	50
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>

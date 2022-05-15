@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 02:40:36 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:29:17 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,26 @@ void	destroy_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->map.wall_img);
 }
 
-int	close_win(t_game *game)
+void	close_win(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win.win_ptr);
-	game->win.win_ptr = NULL;
 	destroy_images(game);
-	exit(0);
+	game_free_memory(game);
+	// mlx_destroy_display(game->mlx);
+	// ft_free_ptr((void *)&game->mlx);
 }
 
 void	error_event(char *error_msg, t_game *game)
 {
 	ft_printf("\n%s\n", error_msg);
 	close_win(game);
-	exit(0);
 }
 
-void	free_ptr(t_game *game)
+void	game_free_memory(t_game *game)
 {
+	// int	i;
+
+	// i = 0;
+	// while (game->map.map_grid[i++])
+	// 	ft_free_ptr((void *)&game->map.map_grid[i]);
 }

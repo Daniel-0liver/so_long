@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 02:09:41 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:28:19 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,28 @@
 # include <math.h>
 # include "../libft/include/libft.h"
 
-typedef struct	s_posit {
-	int	x;
-	int	y;
-}				t_posit;
-
 typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
 }				t_data;
 
 typedef struct s_player {
-	t_posit	*player_posit;
-	char	*player_img_path;
-	void	*player_img;
+	int			player_x;
+	int			player_y;
+	char		*player_img_path;
+	void		*player_img;
 }				t_player;
 
 typedef struct	s_win {
-	void	*win_ptr;
-	int		width;
-	int		height;
+	void		*win_ptr;
+	int			width;
+	int			height;
 }				t_win;
 
 typedef struct	s_map {
-	t_posit		map_posit;
 	int			map_row;
 	int			map_column;
 	int			num_c;
@@ -97,14 +92,15 @@ void		player_init(t_game *game);
 void		map_init(t_game *game);
 
 //Game close events
-int			close_win(t_game *game);
+void		close_win(t_game *game);
 void		destroy_images(t_game *game);
 void		error_event(char *error_msg, t_game *game);
+void		game_free_memory(t_game *game);
 
 // Game render events
-static void	map_render(t_game *game);
-static void	player_render(t_game *game);
-int			win_render(t_game *game);
+void		map_render(t_game *game);
+void		player_render(t_game *game);
+void		win_render(t_game *game);
 
 // Player events
 void		player_move_right(t_game *game);

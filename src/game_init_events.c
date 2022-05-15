@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 02:34:13 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:27:41 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	game_init(t_game *game)
 
 void	game_memory_allocation(t_game *game)
 {
-	game->player.player_posit = ft_calloc(1, sizeof(t_posit));
 }
 
 void	window_init(t_game *game)
@@ -34,8 +33,8 @@ void	window_init(t_game *game)
 void	player_init(t_game *game)
 {
 	game->player.player_img_path = "./textures/player.xpm";
-	game->player.player_posit->x = 0;
-	game->player.player_posit->y = 0;
+	game->player.player_x = 0;
+	game->player.player_y = 0;
 	game->player.player_img = mlx_xpm_file_to_image(game->mlx, game->player.player_img_path, 
 	&game->win.width, &game->win.height);
 }
@@ -43,8 +42,8 @@ void	player_init(t_game *game)
 void	map_init(t_game *game)
 {
 	game->map.map_path = "./textures/map.ber";
-	map_read(game);
-	map_is_rectangular(game);
+	// map_read(game);
+	// map_is_rectangular(game);
 	game->map.floor_path = "./textures/sand.xpm";
 	game->map.floor_img = mlx_xpm_file_to_image(game->mlx, game->map.floor_path, 
 	&game->win.width, &game->win.height);
