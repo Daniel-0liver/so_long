@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/12 00:15:54 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:09:41 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ typedef struct	s_win {
 
 typedef struct	s_map {
 	t_posit		map_posit;
-	int			map_x;
-	int			map_y;
+	int			map_row;
+	int			map_column;
 	int			num_c;
 	int			num_e;
 	int			num_p;
@@ -99,7 +99,7 @@ void		map_init(t_game *game);
 //Game close events
 int			close_win(t_game *game);
 void		destroy_images(t_game *game);
-void		error_event(char *error_msg, int breakpoint, t_game *game);
+void		error_event(char *error_msg, t_game *game);
 
 // Game render events
 static void	map_render(t_game *game);
@@ -114,4 +114,6 @@ void		player_move_down(t_game *game);
 
 // Map events
 void		map_read(t_game *game);
+void		map_valid_char(t_game *game);
+void		map_is_rectangular(t_game *game);
 # endif
