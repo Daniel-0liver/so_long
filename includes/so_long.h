@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 18:28:19 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:39:10 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int			mouse_hook(int x, int y, t_game *game);
 void		get_hooks(t_game *game);
 
 // Game init events
-void		game_memory_allocation(t_game *game);
 void		game_init(t_game *game);
 void		window_init(t_game *game);
 void		pixel_init(t_game *game);

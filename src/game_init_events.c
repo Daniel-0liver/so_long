@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 18:27:41 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:38:29 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 void	game_init(t_game *game)
 {
 	window_init(game);
-	player_init(game);
 	map_init(game);
-}
-
-void	game_memory_allocation(t_game *game)
-{
+	player_init(game);
 }
 
 void	window_init(t_game *game)
@@ -42,8 +38,8 @@ void	player_init(t_game *game)
 void	map_init(t_game *game)
 {
 	game->map.map_path = "./textures/map.ber";
-	// map_read(game);
-	// map_is_rectangular(game);
+	map_read(game);
+	map_is_rectangular(game);
 	game->map.floor_path = "./textures/sand.xpm";
 	game->map.floor_img = mlx_xpm_file_to_image(game->mlx, game->map.floor_path, 
 	&game->win.width, &game->win.height);
