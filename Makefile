@@ -22,7 +22,7 @@ SRC			=	src/so_long.c \
 all:		$(MLX) $(LFT) obj $(NAME)
 
 $(NAME):	$(OBJ)
-			@$(CC) $(FLAGS) -o $@ $^ $(LIB) -fsanitize=address
+			@$(CC) $(FLAGS) -o $@ $^ $(LIB) #-fsanitize=address
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."

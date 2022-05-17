@@ -6,12 +6,14 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 18:39:10 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/18 00:52:31 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# define TILE_SIZE	40
 
 # include <mlx.h>
 # include <X11/keysym.h>

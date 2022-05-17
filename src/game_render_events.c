@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:34:46 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 18:27:13 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/18 00:50:00 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,25 @@
 
 void	map_render(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->map.wall_img, 
-	466, 466);
+	int		i;
+	int		j;
+
+	i = -1;
+	while (game->map.map_grid[++i])
+	{
+		j = -1;
+		while (game->map.map_grid[i][++j])
+		{
+			if (game->map.map_grid[i][j] == '1')
+				mlx_put_image_to_window(game->mlx, game->win.win_ptr,
+					game->map.wall_img, TILE_SIZE * j,
+					TILE_SIZE * i);
+			else
+				mlx_put_image_to_window(game->mlx, game->win.win_ptr,
+					game->map.floor_img, TILE_SIZE * j,
+					TILE_SIZE * i);
+		}
+	}
 }
 
 void	player_render(t_game *game)
