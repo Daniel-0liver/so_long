@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:34:46 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/18 00:50:00 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/19 01:50:11 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	map_render(t_game *game)
 		{
 			if (game->map.map_grid[i][j] == '1')
 				mlx_put_image_to_window(game->mlx, game->win.win_ptr,
-					game->map.wall_img, TILE_SIZE * j,
-					TILE_SIZE * i);
+					game->map.wall_img, 40 * j,
+					40 * i);
 			else
 				mlx_put_image_to_window(game->mlx, game->win.win_ptr,
 					game->map.floor_img, TILE_SIZE * j,
