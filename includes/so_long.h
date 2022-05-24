@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/24 01:17:21 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/24 01:23:46 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void		window_init(t_game *game);
 void		pixel_init(t_game *game);
 void		path_init(t_game *game);
 void		map_init(t_game *game);
+void		img_int(t_game *game);
 
 //Game close events
 void		close_win(t_game *game);
