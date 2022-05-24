@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/19 01:46:08 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/24 01:17:21 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@
 # include <math.h>
 # include "../libft/include/libft.h"
 
+typedef struct	s_coord
+{
+	int			x;
+	int			y;
+}				t_coord;
+
+
 typedef struct	s_data {
 	void		*img;
 	char		*addr;
@@ -39,10 +46,10 @@ typedef struct	s_data {
 }				t_data;
 
 typedef struct s_player {
-	int			player_x;
-	int			player_y;
-	char		*player_img_path;
-	void		*player_img;
+	int			num_p;
+	char		*img_path;
+	void		*img;
+	t_coord		coord;
 }				t_player;
 
 typedef struct	s_win {
@@ -51,19 +58,41 @@ typedef struct	s_win {
 	int			height;
 }				t_win;
 
+typedef struct	s_collect
+{
+	int			num_c;
+	void		*img;
+	char		*img_path;
+	t_coord		coord;
+}				t_collect;
+
+typedef struct	s_floor
+{
+	void		*img;
+	char		*img_path;
+	t_coord		coord;
+}				t_floor;
+
+typedef struct	s_wall
+{
+	void		*img;
+	char		*img_path;
+	t_coord		coord;
+}				t_wall;
+
+typedef struct	s_exit
+{
+	int			num_e;
+	void		*img;
+	char		*img_path;
+	t_coord		coord;
+}				t_exit;
+
 typedef struct	s_map {
 	int			map_row;
 	int			map_column;
-	int			num_c;
-	int			num_e;
-	int			num_p;
-	char		**map_grid;
 	char		*map_path;
-	void		*map_img;
-	char		*floor_path;
-	void		*floor_img;
-	char		*wall_path;
-	void		*wall_img;
+	char		**map_grid;
 }				t_map;
 
 typedef struct	s_game {
@@ -72,6 +101,10 @@ typedef struct	s_game {
 	t_win		win;
 	t_player	player;
 	t_map		map;
+	t_exit		exit;
+	t_floor		floor;
+	t_wall		wall;
+	t_collect	collect;
 }				t_game;
 
 
@@ -89,7 +122,7 @@ void		get_hooks(t_game *game);
 void		game_init(t_game *game);
 void		window_init(t_game *game);
 void		pixel_init(t_game *game);
-void		player_init(t_game *game);
+void		path_init(t_game *game);
 void		map_init(t_game *game);
 
 //Game close events

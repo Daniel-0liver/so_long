@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/22 23:22:19 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/24 01:17:17 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	game_init(t_game *game)
 {
 	map_init(game);
+	path_init(game);
 	window_init(game);
-	player_init(game);
 }
 
 void	window_init(t_game *game)
@@ -29,24 +29,21 @@ void	window_init(t_game *game)
 			"So_long");
 }
 
-void	player_init(t_game *game)
+void	path_init(t_game *game)
 {
-	game->player.player_img_path = "./textures/pikachu_d1_64.xpm";
-	game->player.player_x = 0;
-	game->player.player_y = 0;
-	game->player.player_img = mlx_xpm_file_to_image(game->mlx, game->player.player_img_path, 
-			&game->win.width, &game->win.height);
+	game->map.map_path = "./textures/map.ber";
+	game->player.img_path = "./textures/pikach_d1_64.xpm";
+	game->floor.img_path = "./textures/floor_64.xpm";
+	game->wall.img_path = "./textures/stone_64.xpm";
+	game->exit.img_path = "./textures/stair_64.xpm";
 }
 
 void	map_init(t_game *game)
 {
-	game->map.map_path = "./textures/map.ber";
 	map_read(game);
 	map_is_rectangular(game);
-	game->map.floor_path = "./textures/floor_64.xpm";
 	game->map.floor_img = mlx_xpm_file_to_image(game->mlx, game->map.floor_path, 
 			&game->win.width, &game->win.height);
-	game->map.wall_path = "./textures/stone_64.xpm";
 	game->map.wall_img = mlx_xpm_file_to_image(game->mlx, game->map.wall_path, 
 			&game->win.width, &game->win.height);
 }
