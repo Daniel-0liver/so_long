@@ -17,7 +17,8 @@ SRC			=	src/so_long.c \
 				src/game_close_events.c \
 				src/game_render_events.c \
 				src/player_events.c \
-				src/map_valid_events.c
+				src/map_valid_events.c \
+				src/input_valid_events.c
 
 all:		$(MLX) $(LFT) obj $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/17 01:18:53 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:50:51 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	destroy_images(t_game *game)
 {
-	if (game->player.player_img != NULL)
-		mlx_destroy_image(game->mlx, game->player.player_img);
-	if (game->map.floor_img != NULL)
-		mlx_destroy_image(game->mlx, game->map.floor_img);
-	if (game->map.wall_img != NULL)
-		mlx_destroy_image(game->mlx, game->map.wall_img);
+	if (game->player.img != NULL)
+		mlx_destroy_image(game->mlx, game->player.img);
+	if (game->floor.img != NULL)
+		mlx_destroy_image(game->mlx, game->floor.img);
+	if (game->wall.img != NULL)
+		mlx_destroy_image(game->mlx, game->wall.img);
 }
 
 void	close_win(t_game *game)

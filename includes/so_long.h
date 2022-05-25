@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/24 01:23:46 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/24 21:03:51 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ typedef struct	s_game {
 	t_collect	collect;
 }				t_game;
 
-
+// Input Validation events
+void		input_valid(int argc, char *map_path, t_game *game);
 
 // Functions examples
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);

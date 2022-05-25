@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:34:46 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/21 23:05:55 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:49:36 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	map_render(t_game *game)
 		{
 			if (game->map.map_grid[i][j] == '1')
 				mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
-				game->map.wall_img, (TILE_SIZE * j), (TILE_SIZE * i));
+				game->wall.img, (TILE_SIZE * j), (TILE_SIZE * i));
 			else
 				mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
-				game->map.floor_img, (TILE_SIZE * j), (TILE_SIZE * i));
+				game->floor.img, (TILE_SIZE * j), (TILE_SIZE * i));
 			j++;
 		}
 		i++;
@@ -37,8 +37,8 @@ void	map_render(t_game *game)
 
 void	player_render(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->player.player_img, 
-	game->player.player_x, game->player.player_y);
+	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->player.img, 
+	game->player.coord.x, game->player.coord.y);
 }
 
 void	win_render(t_game *game)
