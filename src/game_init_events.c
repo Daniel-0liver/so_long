@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/24 20:57:49 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/25 01:24:54 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // Start all functions to initialize the game
 void	game_init(t_game *game)
 {
-	path_init(game);
 	map_init(game);
 	window_init(game);
+	path_init(game);
 	img_int(game);
 }
 
@@ -40,7 +40,6 @@ void	path_init(t_game *game)
 	game->floor.img_path = "./textures/floor_64.xpm";
 	game->wall.img_path = "./textures/stone_64.xpm";
 	game->exit.img_path = "./textures/stair_64.xpm";
-	game->map.map_path = "./textures/map.ber";
 }
 
 // Initialize all the images in the mlx

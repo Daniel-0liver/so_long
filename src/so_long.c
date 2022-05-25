@@ -6,16 +6,17 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 18:38:52 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/25 01:23:40 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(void)
+int	main(int argc, char	**argv)
 {
 	t_game	game;
 	
+	input_valid(argc, argv[1], &game);
 	game.mlx = mlx_init();
 	if (game.mlx == NULL)
 		error_event("Error while init MLX", &game);
