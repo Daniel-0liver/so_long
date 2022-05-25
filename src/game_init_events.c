@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/25 01:24:54 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/25 01:47:03 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	window_init(t_game *game)
 void	path_init(t_game *game)
 {
 	game->collect.img_path = "./textures/pokeball_64.xpm";
-	game->player.img_path = "./textures/pikach_d1_64.xpm";
+	game->player.img_path = "./textures/pikachu_d1_64.xpm";
 	game->floor.img_path = "./textures/floor_64.xpm";
 	game->wall.img_path = "./textures/stone_64.xpm";
 	game->exit.img_path = "./textures/stair_64.xpm";
@@ -57,7 +57,7 @@ void	img_int(t_game *game)
 			&game->win.width, &game->win.height);
 	if (!game->floor.img)
 		error_event("Erro while generating floor IMG", game);
-	game->collect.img = mlx_xpm_file_to_image(game->mlx, game->collect.img, 
+	game->collect.img = mlx_xpm_file_to_image(game->mlx, game->collect.img_path, 
 			&game->win.width, &game->win.height);
 	if (!game->collect.img)
 		error_event("Erro while generating collect IMG", game);

@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:33:50 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/19 01:46:20 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/25 01:40:40 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	player_move_right(t_game *game)
 {
-	game->player.player_x += 64;
+	game->player.coord.x += 64;
 }
 
 void	player_move_left(t_game *game)
 {
-	game->player.player_x -= 64;
+	game->player.coord.x -= 64;
 }
 
 void	player_move_up(t_game *game)
 {
-	game->player.player_y -= 64;
+	game->player.coord.y -= 64;
 }
 
 void	player_move_down(t_game *game)
 {
-	game->player.player_y += 64;
+	game->player.coord.y += 64;
 }
