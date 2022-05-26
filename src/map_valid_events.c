@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/25 01:43:20 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/25 23:00:39 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	map_read(t_game *game)
 void	map_is_rectangular(t_game *game)
 {
 	int	i;
-	int	j;
 	
 	i = 0;
 	while (game->map.map_grid[i])
