@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/25 23:00:39 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:23:56 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,28 @@ void	map_is_rectangular(t_game *game)
 
 void	map_valid_char(t_game *game)
 {
-// 	int	i;
+	int	i;
+	int	j;
 
-// 	i = 0;
-// 	while (game->map.map_grid[])
-// 	{
-		
-// 	}
-} 
+	i = 0;
+	while (game->map.map_grid[i])
+	{
+		j = 0;
+		while (game->map.map_grid[i][j])
+		{
+			if (game->map.map_grid[i][j] == 'E')
+				game->exit.num_e += 1;
+			if (game->map.map_grid[i][j] == 'C')
+				game->collect.num_c += 1;
+			if (game->map.map_grid[i][j] == 'P')
+				game->player.num_p += 1;
+			if (game->map.map_grid[i][j] != '\n' && !ft_strchr(VALID_CHAR, 
+				game->map.map_grid[i][j]))
+				error_event("Invalid char", game);
+			j++;
+		}
+		if (j - 1 != game->map.map_column)
+			error_event("Erro map size invalid", game);
+		i++;
+	}
+}

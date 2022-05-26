@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/25 23:05:11 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:19:37 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	close_win(t_game *game)
 void	error_event(char *error_msg, t_game *game)
 {
 	ft_putstr_fd(error_msg, 2);
+	// close_win(game);
 	exit(0);
 }
 

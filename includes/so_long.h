@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/24 21:03:51 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:01:40 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # define TILE_SIZE	64
+# define VALID_CHAR "ECP10"
 
 # include <mlx.h>
 # include <X11/keysym.h>

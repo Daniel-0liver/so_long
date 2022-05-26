@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/25 23:09:01 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:26:11 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // Start all functions to initialize the game
 void	game_init(t_game *game)
 {
+	path_init(game);
 	map_init(game);
 	window_init(game);
-	path_init(game);
 	img_int(game);
 }
 
@@ -32,7 +32,7 @@ void	window_init(t_game *game)
 			"So_long");
 }
 
-// Initialize path of all images
+// Initialize path of all images and number of CPE
 void	path_init(t_game *game)
 {
 	game->collect.img_path = "./textures/pokeball_64.xpm";
@@ -40,6 +40,9 @@ void	path_init(t_game *game)
 	game->floor.img_path = "./textures/floor_64.xpm";
 	game->wall.img_path = "./textures/stone_64.xpm";
 	game->exit.img_path = "./textures/stair_64.xpm";
+	game->collect.num_c = 0;
+	game->player.num_p = 0;
+	game->exit.num_e = 0;
 }
 
 // Initialize all the images in the mlx
@@ -72,4 +75,7 @@ void	map_init(t_game *game)
 {
 	map_read(game);
 	map_is_rectangular(game);
+	map_valid_char(game);
+	if (game->player.num_p != 1)
+		error_event("Just one player is allowed in this game", game);
 }

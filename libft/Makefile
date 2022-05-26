@@ -62,7 +62,6 @@ SRC_FILES 	= 	ft_isalpha.c 				\
 				ft_strmapi.c 				\
 				ft_free_ptr.c				\
 				get_next_line.c				\
-				get_next_line_utils.c		\
 				ft_check_lenght_int.c		\
 				ft_decimal_to_hexadecimal.c	\
 				ft_print_c.c				\

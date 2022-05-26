@@ -6,20 +6,23 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:20:35 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 13:12:48 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:17:56 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFFER_SIZE	50
 
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <ctype.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include "ft_printf.h"
-# include "get_next_line.h"
+
 
 // Struct
 typedef struct s_list
@@ -82,5 +85,12 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_free_ptr(void	**pointer);
+
+// Get next line functions
+char	*ft_join_and_free(char	*buffer, char	*buffer_read);
+char	*ft_read_file(int fd, char *buffer);
+char	*ft_line(char	*buffer);
+char	*ft_next_line(char	*buffer);
+char	*get_next_line(int fd);
 
 #endif

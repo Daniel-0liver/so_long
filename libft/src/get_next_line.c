@@ -6,11 +6,11 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 01:33:56 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/15 13:09:29 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:10:24 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 // Join the buffer with buffer_read, free the memory of buffer
 // and return the join_result.
