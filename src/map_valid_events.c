@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:23:56 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:07:58 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,29 @@ void	map_valid_char(t_game *game)
 		}
 		if (j - 1 != game->map.map_column)
 			error_event("Erro map size invalid", game);
+		i++;
+	}
+}
+
+void	map_is_closed(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < game->map.map_row)
+	{
+		j = 0;
+		while (j < game->map.map_column)
+		{
+			if ((i == 0 || i == (game->map.map_row - 1)) && 
+				game->map.map_grid[i][j] != '1')
+				error_event("Error map must be surrounded by  walls", game);
+			if ((j == 0 || j == (game->map.map_column - 1)) && 
+				game->map.map_grid[i][j] != '1')
+				error_event("Error map must be surrounded by  walls", game);
+			j++;
+		}
 		i++;
 	}
 }

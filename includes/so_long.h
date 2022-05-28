@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:01:40 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:05:38 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,6 @@ void		player_move_down(t_game *game);
 void		map_read(t_game *game);
 void		map_valid_char(t_game *game);
 void		map_is_rectangular(t_game *game);
+void		map_is_closed(t_game *game);
+
 # endif

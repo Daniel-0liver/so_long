@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:26:11 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:05:52 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	map_init(t_game *game)
 {
 	map_read(game);
 	map_is_rectangular(game);
+	map_is_closed(game);
 	map_valid_char(game);
 	if (game->player.num_p != 1)
 		error_event("Just one player is allowed in this game", game);

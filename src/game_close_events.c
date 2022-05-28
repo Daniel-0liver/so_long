@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:19:37 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:09:52 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@ void	game_free_memory(t_game *game)
 	i = 0;
 	while (game->map.map_grid[i++])
 		ft_free_ptr((void *)&game->map.map_grid[i]);
+	// free(game->map.map_grid);
+	// game->map.map_grid = NULL;
 }
