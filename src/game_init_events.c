@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/28 02:05:52 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:12:27 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ void	game_init(t_game *game)
 //Create a window
 void	window_init(t_game *game)
 {
-	game->win.width = TILE_SIZE * game->map.map_column;
-	game->win.height = TILE_SIZE * game->map.map_row;
+	game->win.width = game->size_img * game->map.map_column;
+	game->win.height = game->size_img * game->map.map_row;
 	game->win.win_ptr = mlx_new_window(game->mlx,
 			game->win.width,
 			game->win.height,
 			"So_long");
+	puts("Window init done \n");
 }
 
 // Initialize path of all images and number of CPE
@@ -40,6 +41,7 @@ void	path_init(t_game *game)
 	game->floor.img_path = "./textures/floor_64.xpm";
 	game->wall.img_path = "./textures/stone_64.xpm";
 	game->exit.img_path = "./textures/stair_64.xpm";
+	game->player.num_moves = 0;
 	game->collect.num_c = 0;
 	game->player.num_p = 0;
 	game->exit.num_e = 0;
@@ -68,6 +70,7 @@ void	img_int(t_game *game)
 			&game->win.width, &game->win.height);
 	if (!game->exit.img)
 		error_event("Erro while generating exit IMG", game);
+	puts("IMG init done \n");
 }
 
 // Initialize and verify the map

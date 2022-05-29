@@ -6,15 +6,12 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/28 02:05:38 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:10:52 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-# define TILE_SIZE	64
-# define VALID_CHAR "ECP10"
 
 # include <mlx.h>
 # include <X11/keysym.h>
@@ -48,6 +45,7 @@ typedef struct	s_data {
 
 typedef struct s_player {
 	int			num_p;
+	int			num_moves;
 	char		*img_path;
 	void		*img;
 	t_coord		coord;
@@ -98,6 +96,8 @@ typedef struct	s_map {
 
 typedef struct	s_game {
 	void		*mlx;
+	char		*valid_char;
+	int			size_img;
 	t_data		data;
 	t_win		win;
 	t_player	player;
