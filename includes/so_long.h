@@ -6,14 +6,14 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/29 03:10:52 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/30 00:27:57 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <stdio.h>
@@ -46,6 +46,7 @@ typedef struct	s_data {
 typedef struct s_player {
 	int			num_p;
 	int			num_moves;
+	int			render;
 	char		*img_path;
 	void		*img;
 	t_coord		coord;
@@ -138,6 +139,7 @@ void		game_free_memory(t_game *game);
 void		map_render(t_game *game);
 void		player_render(t_game *game);
 void		win_render(t_game *game);
+void		exit_render(t_game *game);
 
 // Player events
 void		player_move_right(t_game *game);
@@ -150,5 +152,6 @@ void		map_read(t_game *game);
 void		map_valid_char(t_game *game);
 void		map_is_rectangular(t_game *game);
 void		map_is_closed(t_game *game);
+void		char_valid_event(t_game *game, int i, int j, char c);
 
 # endif

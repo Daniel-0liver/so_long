@@ -49,7 +49,7 @@ clean:
 
 fclean:		clean
 			@make -s $@ -C libft
-			@make -s $< -C mlx
+			#@make -s $< -C mlx
 			@rm -rf $(NAME)
 			@echo "Binary file removed."
 

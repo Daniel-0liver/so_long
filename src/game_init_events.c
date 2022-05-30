@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/29 03:12:27 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/29 23:57:47 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	window_init(t_game *game)
 			game->win.width,
 			game->win.height,
 			"So_long");
-	puts("Window init done \n");
 }
 
 // Initialize path of all images and number of CPE
@@ -45,6 +44,7 @@ void	path_init(t_game *game)
 	game->collect.num_c = 0;
 	game->player.num_p = 0;
 	game->exit.num_e = 0;
+	game->player.render = 0;
 }
 
 // Initialize all the images in the mlx
@@ -70,7 +70,6 @@ void	img_int(t_game *game)
 			&game->win.width, &game->win.height);
 	if (!game->exit.img)
 		error_event("Erro while generating exit IMG", game);
-	puts("IMG init done \n");
 }
 
 // Initialize and verify the map
@@ -80,6 +79,4 @@ void	map_init(t_game *game)
 	map_is_rectangular(game);
 	map_is_closed(game);
 	map_valid_char(game);
-	if (game->player.num_p != 1)
-		error_event("Just one player is allowed in this game", game);
 }

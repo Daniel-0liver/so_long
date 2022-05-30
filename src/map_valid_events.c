@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/28 22:35:48 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/29 23:51:28 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	map_valid_char(t_game *game)
 		while (game->map.map_grid[i][j])
 		{
 			if (game->map.map_grid[i][j] == 'E')
-				game->exit.num_e += 1;
+				char_valid_event(game, i, j, 'E');
 			if (game->map.map_grid[i][j] == 'C')
-				game->collect.num_c += 1;
+				char_valid_event(game, i, j, 'C');
 			if (game->map.map_grid[i][j] == 'P')
-				game->player.num_p += 1;
+				char_valid_event(game, i, j, 'P');
 			if (game->map.map_grid[i][j] != '\n' && !ft_strchr
 				(game->valid_char, game->map.map_grid[i][j]))
 				error_event("Invalid char", game);
@@ -97,14 +97,31 @@ void	map_is_closed(t_game *game)
 				error_event("Error map must be surrounded by  walls", game);
 			if ((j == 0 || j == (game->map.map_column - 1)) && 
 				game->map.map_grid[i][j] != '1')
-				error_event("Error map must be surrounded by  walls", game);
-			if (game->map.map_grid[i][j] == 'P')
-			{
-				game->player.coord.x = (j * game->size_img);
-				game->player.coord.y = (i * game->size_img);
-			}
+				error_event("Error map must be surrounded by walls", game);
 			j++;
 		}
 		i++;
+	}
+}
+
+void	char_valid_event(t_game *game, int i, int j, char c)
+{
+	if (c == 'E')
+	{
+		game->exit.num_e += 1;
+		if (game->exit.num_e != 1)
+			error_event("Error just one exit is allowed", game);
+		game->exit.coord.x = (j * game->size_img);
+		game->exit.coord.y = (i * game->size_img);
+	}
+	if (c == 'C')
+		game->collect.num_c += 1;
+	if (c == 'P')
+	{
+		game->player.num_p += 1;
+		if (game->player.num_p != 1)
+			error_event("Error just one player is allowed", game);
+		game->player.coord.x = (j * game->size_img);
+		game->player.coord.y = (i * game->size_img);
 	}
 }

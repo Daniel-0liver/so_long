@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:36:03 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/28 22:28:15 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/29 21:15:13 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	printf("Hello from key_hook!\nKeycode = %d\n", keycode);
+	// printf("Hello from key_hook!\nKeycode = %d\n", keycode);
 	if (keycode == 65307 || keycode == 113)
 		close_win(game);
 	if (keycode == 100 || keycode == 65363)
