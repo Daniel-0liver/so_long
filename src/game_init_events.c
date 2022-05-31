@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/29 23:57:47 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/05/31 00:42:12 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	window_init(t_game *game)
 // Initialize path of all images and number of CPE
 void	path_init(t_game *game)
 {
-	game->collect.img_path = "./textures/pokeball_64.xpm";
-	game->player.img_path = "./textures/pikachu_d1_64.xpm";
-	game->floor.img_path = "./textures/floor_64.xpm";
-	game->wall.img_path = "./textures/stone_64.xpm";
+	game->collect.img_path = "./textures/diamond_64.xpm";
+	game->player.img_path = "./textures/slime_64.xpm";
+	game->floor.img_path = "./textures/wooden_wall_64.xpm";
+	game->wall.img_path = "./textures/wall_64.xpm";
 	game->exit.img_path = "./textures/stair_64.xpm";
 	game->player.num_moves = 0;
 	game->collect.num_c = 0;
