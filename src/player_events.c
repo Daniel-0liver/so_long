@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:33:50 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/29 21:16:20 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:50:42 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	player_move_right(t_game *game)
 	}
 	if (next_posit == '1')
 		return ;
+	game->player.img_numb = 0;
 	game->player.coord.x += game->size_img;
 	game->player.num_moves++;
 	ft_printf("%d\n", game->player.num_moves);
@@ -47,6 +48,7 @@ void	player_move_left(t_game *game)
 	}
 	if (next_posit == '1')
 		return ;
+	game->player.img_numb = 1;
 	game->player.coord.x -= game->size_img;
 	game->player.num_moves++;
 	ft_printf("%d\n", game->player.num_moves);

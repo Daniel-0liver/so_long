@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/30 00:27:57 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:48:06 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,12 @@ typedef struct	s_data {
 }				t_data;
 
 typedef struct s_player {
-	int			num_p;
 	int			num_moves;
+	int			img_numb;
+	int			num_p;
 	int			render;
-	char		*img_path;
-	void		*img;
+	char		**img_path;
+	void		**img;
 	t_coord		coord;
 }				t_player;
 
@@ -126,7 +127,7 @@ void		game_init(t_game *game);
 void		window_init(t_game *game);
 void		pixel_init(t_game *game);
 void		path_init(t_game *game);
-void		map_init(t_game *game);
+void		player_img_init(t_game *game);
 void		img_int(t_game *game);
 
 //Game close events

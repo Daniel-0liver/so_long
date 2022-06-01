@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:34:46 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/30 00:31:40 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/01 00:48:54 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	map_render(t_game *game)
 
 void	player_render(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->player.img, 
+	mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
+		game->player.img[game->player.img_numb], 
 		game->player.coord.x, game->player.coord.y);
-	mlx_string_put(game->mlx, game->win.win_ptr, game->player.coord.x, game->player.coord.y, 0x000000FF, "test");
 }
 
 void	exit_render(t_game *game)
