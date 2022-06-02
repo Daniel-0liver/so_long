@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:34:46 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/01 00:48:54 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/02 01:08:11 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,29 @@ void	map_render(t_game *game)
 
 void	player_render(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
-		game->player.img[game->player.img_numb], 
-		game->player.coord.x, game->player.coord.y);
+	if ((game->frames < 150) || (game->frames > 599 && game->frames < 750))
+		mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
+			game->player.img[0], 
+			game->player.coord.x, game->player.coord.y);
+	if ((game->frames > 149 && game->frames < 300) || (game->frames 
+		> 449 && game->frames < 600))
+		mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
+			game->player.img[1], 
+			game->player.coord.x, game->player.coord.y);
+	if (game->frames > 299 && game->frames < 450)
+		mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
+			game->player.img[1], 
+			game->player.coord.x, game->player.coord.y);
+	game->frames++;
+	if (game->frames >= 750)
+		game->frames = 0;
 }
 
 void	exit_render(t_game *game)
 {
 	if (game->collect.num_c == 0)
-		mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
-			game->exit.img, game->exit.coord.x, game->exit.coord.y);
+		mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->exit.img, 
+			game->exit.coord.x, game->exit.coord.y);
 }
 
 void	win_render(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/01 00:41:43 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/02 00:54:06 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ void	window_init(t_game *game)
 // Initialize path of all images and number of CPE
 void	path_init(t_game *game)
 {
-	game->player.img_path = calloc(2, sizeof(char *));
+	game->player.img_path = calloc(3, sizeof(char *));
 	game->collect.img_path = "./textures/diamond_64.xpm";
-	game->player.img_path[0] = "./textures/slime_right_64.xpm";
-	game->player.img_path[1] = "./textures/slime_left_64.xpm";
+	game->player.img_path[0] = "./textures/slime_1_frame_right_64.xpm";
+	game->player.img_path[1] = "./textures/slime_2_frame_right_64.xpm";
+	game->player.img_path[2] = "./textures/slime_3_frame_right_64.xpm";
 	game->floor.img_path = "./textures/wooden_wall_64.xpm";
 	game->wall.img_path = "./textures/wall_64.xpm";
 	game->exit.img_path = "./textures/stair_wood_64.xpm";
@@ -50,6 +51,7 @@ void	path_init(t_game *game)
 	game->player.num_p = 0;
 	game->exit.num_e = 0;
 	game->player.render = 0;
+	game->frames = 0;
 }
 
 // Initialize all the images in the mlx
@@ -77,15 +79,13 @@ void	img_int(t_game *game)
 // Initialize and verify player img
 void	player_img_init(t_game *game)
 {
-	puts("IMG player init");
 	int	i;
 
 	i = 0;
-	game->player.img = calloc(2, sizeof(void *));
-	while (i < 2)
+	game->player.img = calloc(3, sizeof(void *));
+	while (i < 3)
 	{
 		printf("%s\n", game->player.img_path[i]);
-		puts("inside");
 		game->player.img[i] = mlx_xpm_file_to_image(game->mlx, game->player.img_path[i], &game->win.width, &game->win.height);
 		if (!game->player.img[i])
 			error_event("Erro while generating player IMG", game);

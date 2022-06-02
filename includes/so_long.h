@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/01 00:48:06 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/01 23:12:07 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct	s_game {
 	void		*mlx;
 	char		*valid_char;
 	int			size_img;
+	int			frames;
 	t_data		data;
 	t_win		win;
 	t_player	player;

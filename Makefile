@@ -8,7 +8,8 @@ FLAGS		=	#-Wall -Wextra -Werror
 MLX			=	mlx/Makefile.gen
 LFT			=	libft/libft.a
 INC			=	-I ./includes -I ./libft -I ./mlx
-LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
+LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd 
+#-lmlx -framework OpenGL -framework AppKit
 OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
 SRC			=	src/so_long.c \
 				src/my_mlx_pixel_put.c \
