@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:34:46 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/02 01:08:11 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/03 00:59:38 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	map_render(t_game *game)
 			if (game->map.map_grid[i][j] == 'C')
 				mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
 					game->collect.img, (game->size_img * j), 
-						(game->size_img * i));
+					(game->size_img * i));
+			if (game->map.map_grid[i][j] == 'T')
+				trap_render(game, i, j);
 			j++;
 		}
 		i++;
@@ -66,6 +68,19 @@ void	exit_render(t_game *game)
 	if (game->collect.num_c == 0)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->exit.img, 
 			game->exit.coord.x, game->exit.coord.y);
+}
+
+void	trap_render(t_game *game, int i, int j)
+{
+	if (game->trap.frame < 200 * game->trap.num_t)
+		mlx_put_image_to_window(game->mlx, game->win.win_ptr, 
+			game->trap.img[0], (game->size_img * j), 
+				(game->size_img * i));
+	if (game->trap.frame > 200 * game->trap.num_t)
+		mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->trap.img[1], (game->size_img * j), (game->size_img * i));
+	game->trap.frame++;
+	if (game->trap.frame >= 400 * game->trap.num_t)
+		game->trap.frame = 0;
 }
 
 void	win_render(t_game *game)

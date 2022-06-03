@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/29 23:51:28 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:21:59 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	map_is_closed(t_game *game)
 		j = 0;
 		while (j < game->map.map_column)
 		{
+			if (game->map.map_grid[i][j] == 'T')
+				game->trap.num_t += 1;
 			if ((i == 0 || i == (game->map.map_row - 1)) && 
 				game->map.map_grid[i][j] != '1')
 				error_event("Error map must be surrounded by  walls", game);

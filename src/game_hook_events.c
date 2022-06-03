@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:36:03 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/01 23:34:12 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/03 00:59:36 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	key_hook(int keycode, t_game *game)
 		player_move_down(game);
 	return (0);
 }
+
+
 
 void	get_hooks(t_game *game)
 {

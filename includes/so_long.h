@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/01 23:12:07 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/03 00:27:02 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,21 @@ typedef struct	s_win {
 typedef struct	s_collect
 {
 	int			num_c;
+	int			frame;
 	void		*img;
 	char		*img_path;
 	t_coord		coord;
 }				t_collect;
+
+typedef struct	s_trap
+{
+	int			num_t;
+	int			frame;
+	void		**img;
+	char		**img_path;
+	t_coord		coord;
+}				t_trap;
+
 
 typedef struct	s_floor
 {
@@ -109,6 +120,7 @@ typedef struct	s_game {
 	t_floor		floor;
 	t_wall		wall;
 	t_collect	collect;
+	t_trap		trap;
 }				t_game;
 
 // Input Validation events
@@ -142,6 +154,9 @@ void		map_render(t_game *game);
 void		player_render(t_game *game);
 void		win_render(t_game *game);
 void		exit_render(t_game *game);
+void		collect_render(t_game *game, int i, int j);
+void		trap_render(t_game *game, int i, int j);
+
 
 // Player events
 void		player_move_right(t_game *game);
