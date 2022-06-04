@@ -70,7 +70,8 @@ SRC_FILES 	= 	ft_isalpha.c 				\
 				ft_print_s.c				\
 				ft_print_u.c				\
 				ft_print_x.c				\
-				ft_printf.c
+				ft_printf.c					\
+				ft_free_array.c
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
