@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:33:50 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/01 00:50:42 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:44:29 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	player_move_right(t_game *game)
 	game->player.img_numb = 0;
 	game->player.coord.x += game->size_img;
 	game->player.num_moves++;
-	ft_printf("%d\n", game->player.num_moves);
 	if (next_posit == 'E' && game->collect.num_c == 0)
 		ft_printf("You won!!!");
 }
@@ -51,7 +50,6 @@ void	player_move_left(t_game *game)
 	game->player.img_numb = 1;
 	game->player.coord.x -= game->size_img;
 	game->player.num_moves++;
-	ft_printf("%d\n", game->player.num_moves);
 	if (next_posit == 'E' && game->collect.num_c == 0)
 		ft_printf("You won!!!");
 }
@@ -72,7 +70,6 @@ void	player_move_up(t_game *game)
 		return ;
 	game->player.coord.y -= game->size_img;
 	game->player.num_moves++;
-	ft_printf("%d\n", game->player.num_moves);
 	if (next_posit == 'E' && game->collect.num_c == 0)
 		ft_printf("You won!!!");
 }
@@ -93,7 +90,6 @@ void	player_move_down(t_game *game)
 		return ;
 	game->player.coord.y += game->size_img;
 	game->player.num_moves++;
-	ft_printf("%d\n", game->player.num_moves);
 	if (next_posit == 'E' && game->collect.num_c == 0)
 		ft_printf("You won!!!");
 }

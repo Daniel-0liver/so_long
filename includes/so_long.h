@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/03 00:27:02 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:42:36 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,13 @@ typedef struct	s_trap
 	t_coord		coord;
 }				t_trap;
 
+typedef struct	s_step
+{
+	void		*img;
+	char		*img_path;
+	char		*step_str;
+	t_coord		coord;
+}				t_step;
 
 typedef struct	s_floor
 {
@@ -121,6 +128,7 @@ typedef struct	s_game {
 	t_wall		wall;
 	t_collect	collect;
 	t_trap		trap;
+	t_step		step;
 }				t_game;
 
 // Input Validation events

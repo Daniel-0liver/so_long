@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:34:46 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/03 00:59:38 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:50:23 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void	exit_render(t_game *game)
 	if (game->collect.num_c == 0)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->exit.img, 
 			game->exit.coord.x, game->exit.coord.y);
+	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->step.img, 
+		0, 0);
+	game->step.step_str = ft_itoa(game->player.num_moves);
+	mlx_string_put(game->mlx, game->win.win_ptr, 25, 34, 
+		0x000000FF, game->step.step_str);
 }
 
 void	trap_render(t_game *game, int i, int j)

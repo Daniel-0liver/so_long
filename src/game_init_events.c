@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/03 00:30:26 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:49:01 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ void	path_init(t_game *game)
 	game->player.img_path[2] = "./textures/slime_3_frame_right_64.xpm";
 	game->trap.img_path[0] = "./textures/fire_1_frame_64.xpm";
 	game->trap.img_path[1] = "./textures/fire_2_frame_64.xpm";
-	game->floor.img_path = "./textures/wooden_wall_64.xpm";
-	game->wall.img_path = "./textures/wall_64.xpm";
-	game->exit.img_path = "./textures/stair_wood_64.xpm";
 	game->collect.img_path = "./textures/diamond_64.xpm";
+	game->floor.img_path = "./textures/wooden_wall_64.xpm";
+	game->step.img_path = "./textures/background_steps.xpm";
+	game->exit.img_path = "./textures/stair_wood_64.xpm";
+	game->wall.img_path = "./textures/wall_64.xpm";
 	game->player.num_moves = 0;
 	game->collect.num_c = 0;
 	game->player.num_p = 0;
@@ -65,22 +66,25 @@ void	img_int(t_game *game)
 {
 	player_img_init(game);
 	game->wall.img = mlx_xpm_file_to_image(game->mlx, game->wall.img_path, 
-			&game->win.width, &game->win.height);
+		&game->win.width, &game->win.height);
 	if (!game->wall.img)
 		error_event("Erro while generating wall IMG", game);
 	game->floor.img = mlx_xpm_file_to_image(game->mlx, game->floor.img_path, 
-			&game->win.width, &game->win.height);
+		&game->win.width, &game->win.height);
 	if (!game->floor.img)
 		error_event("Erro while generating floor IMG", game);
 	game->collect.img = mlx_xpm_file_to_image(game->mlx, 
-			game->collect.img_path, 
-			&game->win.width, &game->win.height);
+		game->collect.img_path, &game->win.width, &game->win.height);
 	if (!game->collect.img)
 		error_event("Erro while generating collect IMG", game);
 	game->exit.img = mlx_xpm_file_to_image(game->mlx, game->exit.img_path, 
-			&game->win.width, &game->win.height);
+		&game->win.width, &game->win.height);
 	if (!game->exit.img)
 		error_event("Erro while generating exit IMG", game);
+	game->step.img = mlx_xpm_file_to_image(game->mlx, game->step.img_path, 
+		&game->win.width, &game->win.height);
+	if (!game->step.img)
+		error_event("Error while generating step IMG", game);
 }
 
 // Initialize and verify player img
@@ -102,7 +106,6 @@ void	player_img_init(t_game *game)
 	game->trap.img = calloc(2, sizeof(void *));
 	while (i < 2)
 	{
-		printf("%s\n", game->trap.img_path[i]);
 		game->trap.img[i] = mlx_xpm_file_to_image(game->mlx, game->trap.img_path[i], 
 			&game->win.width, &game->win.height);
 		if (!game->trap.img[i])
