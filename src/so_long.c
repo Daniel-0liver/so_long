@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/25 01:23:40 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 15:17:49 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int	main(int argc, char	**argv)
 	game_init(&game);
 	get_hooks(&game);
 	mlx_loop(game.mlx);
+	return (0);
 }

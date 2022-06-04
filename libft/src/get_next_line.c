@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 01:33:56 by dateixei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:10:24 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 16:56:57 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char	*ft_read_file(int fd, char *buffer)
 	int		bytes_read;
 
 	if (!buffer)
-		buffer = ft_calloc(1, 1);
-	buffer_read = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		buffer = calloc(1, 1);
+	buffer_read = calloc(BUFFER_SIZE + 1, sizeof(char));
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{
@@ -61,7 +61,7 @@ char	*ft_line(char	*buffer)
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	line = ft_calloc(i + 2, sizeof(char));
+	line = calloc(i + 2, sizeof(char));
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
@@ -87,7 +87,7 @@ char	*ft_next_line(char	*buffer)
 		free(buffer);
 		return (NULL);
 	}
-	buffer_line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	buffer_line = calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	i++;
 	j = 0;
 	while (buffer[i])

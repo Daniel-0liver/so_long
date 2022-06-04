@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:25:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 14:46:17 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:48:18 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	ft_free_array(void ***ptr)
 {
-	int		i;
 	void	**ptr_tmp;
 
-	i = 0;
 	ptr_tmp = **ptr;
-	while (ptr_tmp[i])
+	while (*ptr)
 	{
-		free(ptr_tmp[i]);
-		i++;
+		free(*ptr);
+		ptr++;
 	}
-	free(**ptr);
-	**ptr = NULL;
+	free(ptr_tmp);
+	*ptr = NULL;
 }

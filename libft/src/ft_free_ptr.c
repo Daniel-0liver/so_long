@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:10:32 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 14:26:55 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 18:01:08 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_free_ptr(void **ptr)
 {
-	free(*ptr);
-	*ptr = NULL;
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
 }
