@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 17:58:23 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/05 21:12:19 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	map_read(t_game *game)
 	while (game->map.map_grid != NULL)
 	{
 		game->map.map_grid[i] = get_next_line(fd);
+		if (i == 0 && game->map.map_grid[i] == NULL)
+			error_event("Map is empty", game);
 		if (game->map.map_grid[i] == NULL)
 			return ;
 		i++;

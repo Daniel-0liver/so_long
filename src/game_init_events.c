@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 17:07:00 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/05 21:09:56 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 // Start all functions to initialize the game
 void	game_init(t_game *game)
 {
-	path_init(game);
 	map_read(game);
+	path_init(game);
 	map_is_rectangular(game);
 	map_is_closed(game);
 	map_valid_char(game);

@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 21:00:52 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 16:46:07 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/04 18:41:52 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	input_valid(int argc, char *map_path, t_game *game)
 		error_event("Error when validating arguments", game);
 	if (ft_strncmp(map_path + strlen(map_path) - 4, ".ber", 4) != 0)
 		error_event("Map file must be .ber", game);
-	if (!map_path)
-		error_event("Map empty", game);
 	game->map.map_path = map_path;
 	game->size_img = 64;
 	game->valid_char = "ECP10T";

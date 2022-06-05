@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 18:13:18 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/05 23:01:27 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,20 @@ void	close_win(t_game *game)
 {
 	destroy_images(game);
 	game_free_memory(game);
-	// mlx_destroy_window(game->mlx, game->win.win_ptr);
-	// mlx_destroy_display(game->mlx);
+	mlx_destroy_window(game->mlx, game->win.win_ptr);
+	game->win.win_ptr = NULL;
+	mlx_destroy_display(game->mlx);
+	game->mlx = NULL;
 	exit(0);
 }
 
 void	error_event(char *error_msg, t_game *game)
 {
+	if (!ft_strncmp(error_msg, "Map is empty", 12))
+	{
+		perror(error_msg);
+		exit(0);
+	}
 	perror(error_msg);
 	close_win(game);
 }
