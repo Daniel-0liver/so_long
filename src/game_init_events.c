@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/05 21:09:56 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/06 00:08:58 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	game_init(t_game *game)
 	map_read(game);
 	path_init(game);
 	map_is_rectangular(game);
-	map_is_closed(game);
 	map_valid_char(game);
+	map_is_closed(game);
 	window_init(game);
 	img_int(game);
 }
@@ -30,9 +30,9 @@ void	window_init(t_game *game)
 	game->win.width = game->size_img * game->map.map_column;
 	game->win.height = game->size_img * game->map.map_row;
 	game->win.win_ptr = mlx_new_window(game->mlx,
-			game->win.width,
-			game->win.height,
-			"So_long");
+		game->win.width, game->win.height, "So_long");
+	if (game->win.win_ptr == NULL)
+		error_event("Error\nWhile generating window", game, 0);
 }
 
 // Initialize path of all images and number of CPET
@@ -68,23 +68,23 @@ void	img_int(t_game *game)
 	game->wall.img = mlx_xpm_file_to_image(game->mlx, game->wall.img_path, 
 		&game->win.width, &game->win.height);
 	if (!game->wall.img)
-		error_event("Erro while generating wall IMG", game);
+		error_event("Erro while generating wall IMG", game, 0);
 	game->floor.img = mlx_xpm_file_to_image(game->mlx, game->floor.img_path, 
 		&game->win.width, &game->win.height);
 	if (!game->floor.img)
-		error_event("Erro while generating floor IMG", game);
+		error_event("Erro while generating floor IMG", game, 0);
 	game->collect.img = mlx_xpm_file_to_image(game->mlx, 
 		game->collect.img_path, &game->win.width, &game->win.height);
 	if (!game->collect.img)
-		error_event("Erro while generating collect IMG", game);
+		error_event("Erro while generating collect IMG", game, 0);
 	game->exit.img = mlx_xpm_file_to_image(game->mlx, game->exit.img_path, 
 		&game->win.width, &game->win.height);
 	if (!game->exit.img)
-		error_event("Erro while generating exit IMG", game);
+		error_event("Erro while generating exit IMG", game, 0);
 	game->step.img = mlx_xpm_file_to_image(game->mlx, game->step.img_path, 
 		&game->win.width, &game->win.height);
 	if (!game->step.img)
-		error_event("Error while generating step IMG", game);
+		error_event("Error while generating step IMG", game, 0);
 }
 
 // Initialize and verify player img
@@ -99,7 +99,7 @@ void	player_img_init(t_game *game)
 		game->player.img[i] = mlx_xpm_file_to_image(game->mlx, 
 			game->player.img_path[i], &game->win.width, &game->win.height);
 		if (!game->player.img[i])
-			error_event("Erro while generating player IMG", game);
+			error_event("Erro while generating player IMG", game, 0);
 		i++;
 	}
 	i = 0;
@@ -109,7 +109,7 @@ void	player_img_init(t_game *game)
 		game->trap.img[i] = mlx_xpm_file_to_image(game->mlx, game->trap.img_path[i], 
 			&game->win.width, &game->win.height);
 		if (!game->trap.img[i])
-			error_event("Erro while generating trap IMG", game);
+			error_event("Erro while generating trap IMG", game, 0);
 		i++;
 	}
 }

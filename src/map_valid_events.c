@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/05 21:12:19 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/06 01:16:55 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	map_read(t_game *game)
 	
 	fd = open(game->map.map_path, O_RDONLY);
 	if (fd < 0)
-		error_event("Error while opening file", game);
+		error_event("Error\nWhile opening file", game, 1);
 	free(game->map.map_grid);
 	if (game->map.map_grid == NULL)
-		error_event("Error while allocating memory for map", game);
+		error_event("Error\nWhile allocating memory for map", game, 1);
 	i = 0;
 	while (game->map.map_grid != NULL)
 	{
 		game->map.map_grid[i] = get_next_line(fd);
 		if (i == 0 && game->map.map_grid[i] == NULL)
-			error_event("Map is empty", game);
+			error_event("Error\nMap is empty", game, 1);
 		if (game->map.map_grid[i] == NULL)
 			return ;
 		i++;
@@ -50,7 +50,19 @@ void	map_is_rectangular(t_game *game)
 		i++;
 	game->map.map_column = i - 1;
 	if (game->map.map_row == game->map.map_column)
-		error_event("Error Map Must be Retangular!", game);
+		error_event("Error\nMap Must be Retangular!", game, 0);
+	i = 0;
+	while (game->map.map_grid[i])
+	{
+		if (ft_strlen(game->map.map_grid[i]) != (game->map.map_column + 1))
+		{
+			printf("%d, %d\n", i, game->map.map_row);
+			if ((i + 1) == game->map.map_row)
+				return ;
+			error_event("Error\nMap size invalid", game, 0);
+		}
+		i++;
+	}
 }
 
 // Check if the map has some not allowed char
@@ -73,11 +85,9 @@ void	map_valid_char(t_game *game)
 				char_valid_event(game, i, j, 'P');
 			if (game->map.map_grid[i][j] != '\n' && !ft_strchr
 				(game->valid_char, game->map.map_grid[i][j]))
-				error_event("Invalid char", game);
+				error_event("Error\nInvalid char", game, 0);
 			j++;
 		}
-		if (j - 1 != game->map.map_column)
-			error_event("Erro map size invalid", game);
 		i++;
 	}
 }
@@ -98,14 +108,18 @@ void	map_is_closed(t_game *game)
 				game->trap.num_t += 1;
 			if ((i == 0 || i == (game->map.map_row - 1)) && 
 				game->map.map_grid[i][j] != '1')
-				error_event("Error map must be surrounded by  walls", game);
+				error_event("Error\nMap must be surrounded by  walls", game, 0);
 			if ((j == 0 || j == (game->map.map_column - 1)) && 
 				game->map.map_grid[i][j] != '1')
-				error_event("Error map must be surrounded by walls", game);
+				error_event("Error\nMap must be surrounded by walls", game, 0);
 			j++;
 		}
 		i++;
 	}
+	if (game->exit.num_e != 1)
+		error_event("Error\nJust one exit is allowed", game, 0);
+	if (game->player.num_p != 1)
+		error_event("Error\nJust one player is allowed", game, 0);
 }
 
 void	char_valid_event(t_game *game, int i, int j, char c)
@@ -113,8 +127,6 @@ void	char_valid_event(t_game *game, int i, int j, char c)
 	if (c == 'E')
 	{
 		game->exit.num_e += 1;
-		if (game->exit.num_e != 1)
-			error_event("Error just one exit is allowed", game);
 		game->exit.coord.x = (j * game->size_img);
 		game->exit.coord.y = (i * game->size_img);
 	}
@@ -123,8 +135,6 @@ void	char_valid_event(t_game *game, int i, int j, char c)
 	if (c == 'P')
 	{
 		game->player.num_p += 1;
-		if (game->player.num_p != 1)
-			error_event("Error just one player is allowed", game);
 		game->player.coord.x = (j * game->size_img);
 		game->player.coord.y = (i * game->size_img);
 	}

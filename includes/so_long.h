@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 15:24:24 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/06 00:25:44 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void		img_int(t_game *game);
 //Game close events
 void		close_win(t_game *game);
 void		destroy_images(t_game *game);
-void		error_event(char *error_msg, t_game *game);
+void		error_event(char *error_msg, t_game *game, int error_code);
 void		game_free_memory(t_game *game);
 void		destroy_player_trap_img(t_game *game);
 
