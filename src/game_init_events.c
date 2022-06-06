@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/06 00:08:58 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/07 00:08:16 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	game_init(t_game *game)
 	path_init(game);
 	map_is_rectangular(game);
 	map_valid_char(game);
+	if (game->exit.num_e != 1)
+		error_event("Error\nJust one exit is allowed", game, 0);
+	if (game->player.num_p != 1)
+		error_event("Error\nJust one player is allowed", game, 0);
+	if (game->collect.num_c <= 0)
+		error_event("Error\nMust be at least one collectible", game, 0);
 	map_is_closed(game);
 	window_init(game);
 	img_int(game);

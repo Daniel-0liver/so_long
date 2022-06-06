@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/06 01:16:55 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/07 00:28:21 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	map_read(t_game *game)
 	fd = open(game->map.map_path, O_RDONLY);
 	if (fd < 0)
 		error_event("Error\nWhile opening file", game, 1);
-	free(game->map.map_grid);
-	if (game->map.map_grid == NULL)
-		error_event("Error\nWhile allocating memory for map", game, 1);
 	i = 0;
 	while (game->map.map_grid != NULL)
 	{
@@ -57,9 +54,8 @@ void	map_is_rectangular(t_game *game)
 		if (ft_strlen(game->map.map_grid[i]) != (game->map.map_column + 1))
 		{
 			printf("%d, %d\n", i, game->map.map_row);
-			if ((i + 1) == game->map.map_row)
-				return ;
-			error_event("Error\nMap size invalid", game, 0);
+			if (i != game->map.map_row)
+				error_event("Error\nMap size invalid", game, 0);
 		}
 		i++;
 	}
@@ -108,7 +104,7 @@ void	map_is_closed(t_game *game)
 				game->trap.num_t += 1;
 			if ((i == 0 || i == (game->map.map_row - 1)) && 
 				game->map.map_grid[i][j] != '1')
-				error_event("Error\nMap must be surrounded by  walls", game, 0);
+				error_event("Error\nMap must be surrounded by walls", game, 0);
 			if ((j == 0 || j == (game->map.map_column - 1)) && 
 				game->map.map_grid[i][j] != '1')
 				error_event("Error\nMap must be surrounded by walls", game, 0);
@@ -116,10 +112,6 @@ void	map_is_closed(t_game *game)
 		}
 		i++;
 	}
-	if (game->exit.num_e != 1)
-		error_event("Error\nJust one exit is allowed", game, 0);
-	if (game->player.num_p != 1)
-		error_event("Error\nJust one player is allowed", game, 0);
 }
 
 void	char_valid_event(t_game *game, int i, int j, char c)
