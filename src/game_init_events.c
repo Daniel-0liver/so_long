@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/07 00:08:16 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/07 01:30:29 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ void	path_init(t_game *game)
 	game->wall.img_path = "./textures/wall_64.xpm";
 	game->player.num_moves = 0;
 	game->collect.num_c = 0;
+	game->player.render = 0;
+	game->collect.frame = 0;
 	game->player.num_p = 0;
 	game->exit.num_e = 0;
 	game->trap.num_t = 0;
-	game->frames = 0;
 	game->trap.frame = 0;
-	game->player.render = 0;
-	game->collect.frame = 0;
+	game->frames = 0;
 }
 
 // Initialize all the images in the mlx
