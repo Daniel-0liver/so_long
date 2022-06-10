@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/06 00:06:06 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:14:46 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,11 @@ void	error_event(char *error_msg, t_game *game, int error_code)
 
 void	game_free_memory(t_game *game)
 {
-	char	**grid;
 	char	*tmp;
 	int		i;
 
 	if (game->map.map_grid)
 	{
-		grid = game->map.map_grid;
 		i = 0;
 		while (*game->map.map_grid != NULL)
 		{

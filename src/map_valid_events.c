@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/07 00:28:21 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:52:22 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ void	map_is_rectangular(t_game *game)
 	i = 0;
 	while (game->map.map_grid[i])
 	{
-		if (ft_strlen(game->map.map_grid[i]) != (game->map.map_column + 1))
+		if (ft_strlen(game->map.map_grid[i]) != (size_t)(game->map.map_column + 1))
 		{
-			printf("%d, %d\n", i, game->map.map_row);
-			if (i != game->map.map_row)
+			if ((i + 1) != game->map.map_row)
 				error_event("Error\nMap size invalid", game, 0);
 		}
 		i++;

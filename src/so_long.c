@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 01:36:13 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/06 00:12:38 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:24:00 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	main(int argc, char	**argv)
 {
 	t_game	game;
 	
-	input_valid(argc, argv[1], &game);
+	(void)argv;
+	argc = 2;
+	input_valid(argc, "maps/map.ber", &game);
 	game.mlx = mlx_init();
 	if (game.mlx == NULL)
 		error_event("Error\nWhile initialing MLX", &game, 1);
