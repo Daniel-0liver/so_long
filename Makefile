@@ -12,7 +12,6 @@ LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 #-lmlx -framework OpenGL -framework AppKit
 OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
 SRC			=	src/so_long.c \
-				src/my_mlx_pixel_put.c \
 				src/game_hook_events.c \
 				src/game_init_events.c \
 				src/game_close_events.c \

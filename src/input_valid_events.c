@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 21:00:52 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/10 15:23:48 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 21:48:22 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	input_valid(int argc, char *map_path, t_game *game)
 {
 	if (argc != 2)
-		error_event("Error\nWhen validating arguments", game, 1);
+		error_event("Error\nValidating arguments", game, 1);
 	if (ft_strncmp(map_path + strlen(map_path) - 4, ".ber", 4) != 0)
 		error_event("Error\nMap file must be .ber", game, 1);
 	game->map.map_grid = calloc(1, sizeof(char **));

@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/07 01:30:29 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 22:10:09 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	window_init(t_game *game)
 	game->win.width = game->size_img * game->map.map_column;
 	game->win.height = game->size_img * game->map.map_row;
 	game->win.win_ptr = mlx_new_window(game->mlx,
-		game->win.width, game->win.height, "So_long");
+			game->win.width, game->win.height, "So_long");
 	if (game->win.win_ptr == NULL)
 		error_event("Error\nWhile generating window", game, 0);
 }
@@ -71,24 +71,24 @@ void	path_init(t_game *game)
 void	img_int(t_game *game)
 {
 	player_img_init(game);
-	game->wall.img = mlx_xpm_file_to_image(game->mlx, game->wall.img_path, 
-		&game->win.width, &game->win.height);
+	game->wall.img = mlx_xpm_file_to_image(game->mlx, game->wall.img_path,
+			&game->win.width, &game->win.height);
 	if (!game->wall.img)
 		error_event("Erro while generating wall IMG", game, 0);
-	game->floor.img = mlx_xpm_file_to_image(game->mlx, game->floor.img_path, 
-		&game->win.width, &game->win.height);
+	game->floor.img = mlx_xpm_file_to_image(game->mlx, game->floor.img_path,
+			&game->win.width, &game->win.height);
 	if (!game->floor.img)
 		error_event("Erro while generating floor IMG", game, 0);
-	game->collect.img = mlx_xpm_file_to_image(game->mlx, 
-		game->collect.img_path, &game->win.width, &game->win.height);
+	game->collect.img = mlx_xpm_file_to_image(game->mlx,
+			game->collect.img_path, &game->win.width, &game->win.height);
 	if (!game->collect.img)
 		error_event("Erro while generating collect IMG", game, 0);
-	game->exit.img = mlx_xpm_file_to_image(game->mlx, game->exit.img_path, 
-		&game->win.width, &game->win.height);
+	game->exit.img = mlx_xpm_file_to_image(game->mlx, game->exit.img_path,
+			&game->win.width, &game->win.height);
 	if (!game->exit.img)
 		error_event("Erro while generating exit IMG", game, 0);
-	game->step.img = mlx_xpm_file_to_image(game->mlx, game->step.img_path, 
-		&game->win.width, &game->win.height);
+	game->step.img = mlx_xpm_file_to_image(game->mlx, game->step.img_path,
+			&game->win.width, &game->win.height);
 	if (!game->step.img)
 		error_event("Error while generating step IMG", game, 0);
 }
@@ -102,8 +102,8 @@ void	player_img_init(t_game *game)
 	game->player.img = calloc(3, sizeof(void *));
 	while (i < 3)
 	{
-		game->player.img[i] = mlx_xpm_file_to_image(game->mlx, 
-			game->player.img_path[i], &game->win.width, &game->win.height);
+		game->player.img[i] = mlx_xpm_file_to_image(game->mlx,
+				game->player.img_path[i], &game->win.width, &game->win.height);
 		if (!game->player.img[i])
 			error_event("Erro while generating player IMG", game, 0);
 		i++;
@@ -112,8 +112,8 @@ void	player_img_init(t_game *game)
 	game->trap.img = calloc(2, sizeof(void *));
 	while (i < 2)
 	{
-		game->trap.img[i] = mlx_xpm_file_to_image(game->mlx, game->trap.img_path[i], 
-			&game->win.width, &game->win.height);
+		game->trap.img[i] = mlx_xpm_file_to_image(game->mlx,
+				game->trap.img_path[i], &game->win.width, &game->win.height);
 		if (!game->trap.img[i])
 			error_event("Erro while generating trap IMG", game, 0);
 		i++;

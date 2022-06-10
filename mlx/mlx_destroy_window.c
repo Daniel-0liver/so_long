@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_destroy_window.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/10 22:41:52 by dateixei          #+#    #+#             */
+/*   Updated: 2022/06/10 22:43:16 by dateixei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 ** mlx_destroy_window.c for MinilibX in 
 ** 
@@ -8,31 +20,29 @@
 ** Last update Tue May 15 16:46:08 2007 Olivier Crouzet
 */
 
+#include "mlx_int.h"
 
-#include	"mlx_int.h"
-
-
-int	mlx_destroy_window(t_xvar *xvar,t_win_list *win)
+int	mlx_destroy_window(t_xvar *xvar, t_win_list *win)
 {
-  t_win_list	*w;
-  t_win_list	*prev;
-  t_win_list	first;
+	t_win_list	*w;
+	t_win_list	*prev;
+	t_win_list	first;
 
-  first.next = xvar->win_list;
-  prev = &first;
-  w = prev->next;
-  while (w)
-    {
-      if (w==win)
-	prev->next = w->next;
-      else
-	prev = w;
-      w = w->next;
-    }
-  xvar->win_list = first.next;
-  XDestroyWindow(xvar->display,win->window);
-  XFreeGC(xvar->display,win->gc);
-  free(win);
-  if (xvar->do_flush)
-    XFlush(xvar->display);
+	first.next = xvar->win_list;
+	prev = &first;
+	w = prev->next;
+	while (w)
+	{
+		if (w == win)
+			prev->next = w->next;
+		else
+			prev = w;
+		w = w->next;
+	}
+	xvar->win_list = first.next;
+	XDestroyWindow(xvar->display, win->window);
+	XFreeGC(xvar->display, win->gc);
+	free(win);
+	if (xvar->do_flush)
+		XFlush(xvar->display);
 }

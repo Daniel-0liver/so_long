@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 15:00:24 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/10 15:21:27 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 22:18:56 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@
 # include <math.h>
 # include "../libft/include/libft.h"
 
-typedef struct	s_coord
+typedef struct s_coord
 {
 	int			x;
 	int			y;
 }				t_coord;
 
-
-typedef struct	s_data {
+typedef struct s_data {
 	void		*img;
 	char		*addr;
 	int			bits_per_pixel;
@@ -53,13 +52,13 @@ typedef struct s_player {
 	t_coord		coord;
 }				t_player;
 
-typedef struct	s_win {
+typedef struct s_win {
 	void		*win_ptr;
 	int			width;
 	int			height;
 }				t_win;
 
-typedef struct	s_collect
+typedef struct s_collect
 {
 	int			num_c;
 	int			frame;
@@ -68,7 +67,7 @@ typedef struct	s_collect
 	t_coord		coord;
 }				t_collect;
 
-typedef struct	s_trap
+typedef struct s_trap
 {
 	int			num_t;
 	int			frame;
@@ -77,7 +76,7 @@ typedef struct	s_trap
 	t_coord		coord;
 }				t_trap;
 
-typedef struct	s_step
+typedef struct s_step
 {
 	void		*img;
 	char		*img_path;
@@ -85,21 +84,21 @@ typedef struct	s_step
 	t_coord		coord;
 }				t_step;
 
-typedef struct	s_floor
+typedef struct s_floor
 {
 	void		*img;
 	char		*img_path;
 	t_coord		coord;
 }				t_floor;
 
-typedef struct	s_wall
+typedef struct s_wall
 {
 	void		*img;
 	char		*img_path;
 	t_coord		coord;
 }				t_wall;
 
-typedef struct	s_exit
+typedef struct s_exit
 {
 	int			num_e;
 	void		*img;
@@ -107,14 +106,14 @@ typedef struct	s_exit
 	t_coord		coord;
 }				t_exit;
 
-typedef struct	s_map {
+typedef struct s_map {
 	int			map_row;
 	int			map_column;
 	char		*map_path;
 	char		**map_grid;
 }				t_map;
 
-typedef struct	s_game {
+typedef struct s_game {
 	void		*mlx;
 	char		*valid_char;
 	int			size_img;
@@ -133,10 +132,6 @@ typedef struct	s_game {
 
 // Input Validation events
 void		input_valid(int argc, char *map_path, t_game *game);
-
-// Functions examples
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int			render_next_frame(t_game *game);
 
 // Game hook events
 int			key_hook(int keycode, t_game *game);
@@ -166,7 +161,6 @@ void		exit_render(t_game *game);
 void		collect_render(t_game *game, int i, int j);
 void		trap_render(t_game *game, int i, int j);
 
-
 // Player events
 void		player_move_right(t_game *game);
 void		player_move_left(t_game *game);
@@ -180,4 +174,4 @@ void		map_is_rectangular(t_game *game);
 void		map_is_closed(t_game *game);
 void		char_valid_event(t_game *game, int i, int j, char c);
 
-# endif
+#endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_expose_hook.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/10 22:44:05 by dateixei          #+#    #+#             */
+/*   Updated: 2022/06/10 22:44:24 by dateixei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 ** mlx_expose_hook.c for MiniLibX in 
 ** 
@@ -8,15 +20,11 @@
 ** Last update Fri Feb 23 17:07:42 2001 Charlie Root
 */
 
-
 #include	"mlx_int.h"
 
-
-
-
-int		mlx_expose_hook(t_win_list *win,int (*funct)(),void *param)
+int	mlx_expose_hook(t_win_list *win, int (*funct)(), void *param)
 {
-  win->hooks[Expose].hook = funct;
-  win->hooks[Expose].param = param;
-  win->hooks[Expose].mask = ExposureMask;
+	win->hooks[Expose].hook = funct;
+	win->hooks[Expose].param = param;
+	win->hooks[Expose].mask = ExposureMask;
 }

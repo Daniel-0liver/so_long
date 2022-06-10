@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_lib_xpm.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/10 23:24:17 by dateixei          #+#    #+#             */
+/*   Updated: 2022/06/10 23:24:33 by dateixei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 ** mlx_xpm.c for minilibX in 
 ** 
@@ -8,19 +20,15 @@
 ** Last update Thu Oct  4 16:00:22 2001 Charlie Root
 */
 
-
 #include	"mlx_int.h"
-
-
-
 
 void		*mlx_int_xpm_f_image(t_xvar *xvar,int *width,int *height,
 				     int (*xpm_func)(),void *param)
 {
-  XImage	*img1;
-  XImage	*img2;
-  t_img		*im2;
-  XpmAttributes	xpm_att;
+	XImage			*img1;
+	XImage			*img2;
+	t_img			*im2;
+	XpmAttributes	xpm_att;
 
   xpm_att.visual = xvar->visual;
   xpm_att.colormap = xvar->cmap;

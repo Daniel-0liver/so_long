@@ -1,60 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_ext_randr.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/10 22:44:35 by dateixei          #+#    #+#             */
+/*   Updated: 2022/06/10 22:47:57 by dateixei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-
-#include	"mlx_int.h"
-
-#include	<unistd.h>
+#include "mlx_int.h"
+#include <unistd.h>
 #include <X11/extensions/Xrandr.h>
 
 /* global for independant extension */
 
 RRMode	saved_mode = 0;
 
-
-int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list *win, int fullscreen)
+int	mlx_ext_fullscreen(t_xvar *xvar, t_win_list *win, int fullscreen)
 {
-  XWindowAttributes	watt;
-  int			i;
-  int			j;
-  XRRScreenResources	*res;
-  XRROutputInfo		*o_info;
-  XRRCrtcInfo		*crtc;
-  RRMode		mode_candidate;
-  int			idx_output;
-  int			idx_candidate;
+	XWindowAttributes	watt;
+	int					i;
+	int					j;
+	XRRScreenResources	*res;
+	XRROutputInfo		*o_info;
+	XRRCrtcInfo			*crtc;
+	RRMode				mode_candidate;
+	int					idx_output;
+	int					idx_candidate;
 
-  if (!XGetWindowAttributes(xvar->display, win->window, &watt))
-    return (0);
-
-  res = XRRGetScreenResources(xvar->display, xvar->root);
-  o_info = NULL;
-  idx_output = -1;
-  i = res->noutput;
-  while (i--)
-    {
-      o_info = XRRGetOutputInfo(xvar->display, res, res->outputs[i]);
-      if (o_info->connection == RR_Connected)
+	if (!XGetWindowAttributes(xvar->display, win->window, &watt))
+		return (0);
+	res = XRRGetScreenResources(xvar->display, xvar->root);
+	o_info = NULL;
+	idx_output = -1;
+	i = res->noutput;
+	while (i--)
 	{
-	  idx_output = i;
-	  i = 0;
+		o_info = XRRGetOutputInfo(xvar->display, res, res->outputs[i]);
+		if (o_info->connection == RR_Connected)
+		{
+			idx_output = i;
+			i = 0;
+		}
+		else
+			XRRFreeOutputInfo(o_info);
 	}
-      else
-	XRRFreeOutputInfo(o_info);
-    }
-  if (!o_info)
-    {
-      XRRFreeScreenResources(res);
-      return (0);
-    }
-  
-  idx_candidate = -1;
-  i = o_info->nmode;
-  while (i--)
-    {
-      j = res->nmode;
-      while (j--)
-	if (res->modes[j].id == o_info->modes[i])
-	  if (res->modes[j].width >= watt.width && res->modes[j].height >= watt.height &&
+	if (!o_info)
+	{
+		XRRFreeScreenResources(res);
+		return (0);
+	}
+	idx_candidate = -1;
+	i = o_info->nmode;
+	while (i--)
+	{
+		j = res->nmode;
+		while (j--)
+			if (res->modes[j].id == o_info->modes[i])
+				if (res->modes[j].width >= watt.width && res->modes[j].height >= watt.height &&
 	      (idx_candidate == -1 || res->modes[idx_candidate].width > res->modes[j].width ||
 	       res->modes[idx_candidate].height > res->modes[j].height) )
 	    idx_candidate = i;

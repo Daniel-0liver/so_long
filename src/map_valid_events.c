@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/10 15:52:22 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 22:17:15 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	map_read(t_game *game)
 {
 	int		fd;
 	int		i;
-	
+
 	fd = open(game->map.map_path, O_RDONLY);
 	if (fd < 0)
 		error_event("Error\nWhile opening file", game, 1);
@@ -37,7 +37,7 @@ void	map_read(t_game *game)
 void	map_is_rectangular(t_game *game)
 {
 	int	i;
-	
+
 	i = 0;
 	while (game->map.map_grid[i])
 		i++;
@@ -51,7 +51,8 @@ void	map_is_rectangular(t_game *game)
 	i = 0;
 	while (game->map.map_grid[i])
 	{
-		if (ft_strlen(game->map.map_grid[i]) != (size_t)(game->map.map_column + 1))
+		if (ft_strlen(game->map.map_grid[i])
+			!= (size_t)(game->map.map_column + 1))
 		{
 			if ((i + 1) != game->map.map_row)
 				error_event("Error\nMap size invalid", game, 0);
@@ -101,11 +102,11 @@ void	map_is_closed(t_game *game)
 		{
 			if (game->map.map_grid[i][j] == 'T')
 				game->trap.num_t += 1;
-			if ((i == 0 || i == (game->map.map_row - 1)) && 
-				game->map.map_grid[i][j] != '1')
+			if ((i == 0 || i == (game->map.map_row - 1))
+				&& game->map.map_grid[i][j] != '1')
 				error_event("Error\nMap must be surrounded by walls", game, 0);
-			if ((j == 0 || j == (game->map.map_column - 1)) && 
-				game->map.map_grid[i][j] != '1')
+			if ((j == 0 || j == (game->map.map_column - 1))
+				&& game->map.map_grid[i][j] != '1')
 				error_event("Error\nMap must be surrounded by walls", game, 0);
 			j++;
 		}

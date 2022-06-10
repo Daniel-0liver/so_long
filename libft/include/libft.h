@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:20:35 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/04 14:46:40 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 22:07:13 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include "ft_printf.h"
-
 
 // Struct
 typedef struct s_list
@@ -49,7 +48,6 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 void	ft_free_array(void ***ptr);
-
 
 // String manipulation functions
 size_t	ft_strlen(const char *s);

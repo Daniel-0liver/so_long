@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_int_set_win_event_mask.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/10 23:12:06 by dateixei          #+#    #+#             */
+/*   Updated: 2022/06/10 23:12:49 by dateixei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 ** mlx_int_set_win_event_mask.c for MiniLibX in 
 ** 
@@ -8,27 +20,23 @@
 ** Last update Fri Feb 23 17:07:42 2001 Charlie Root
 */
 
-
 #include	"mlx_int.h"
-
-
-
 
 int	mlx_int_set_win_event_mask(t_xvar *xvar)
 {
-  t_win_list	*win;
-  int		mask;
-  int		i;
-  XSetWindowAttributes	xwa;
+	t_win_list				*win;
+	int						mask;
+	int						i;
+	XSetWindowAttributes	xwa;
 
-  win = xvar->win_list;
-  while (win)
-    {
-      xwa.event_mask = 0;
-      i = MLX_MAX_EVENT;
-      while (i--)
-	xwa.event_mask |= win->hooks[i].mask;
-      XChangeWindowAttributes(xvar->display, win->window, CWEventMask, &xwa);
-      win = win->next;
-    }
+	win = xvar->win_list;
+	while (win)
+	{
+		xwa.event_mask = 0;
+		i = MLX_MAX_EVENT;
+		while (i--)
+			xwa.event_mask |= win->hooks[i].mask;
+		XChangeWindowAttributes(xvar->display, win->window, CWEventMask, &xwa);
+		win = win->next;
+	}
 }

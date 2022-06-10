@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/10 15:14:46 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:32:45 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@
 
 void	close_win(t_game *game)
 {
-	// destroy_images(game);
 	game_free_memory(game);
 	exit(0);
 }
@@ -87,14 +86,4 @@ void	game_free_memory(t_game *game)
 			i++;
 		}
 	}
-	// if (game->player.img)
-	// 	ft_free_ptr((void *)&game->player.img);
-	// if (game->player.img_path)
-	// 	ft_free_ptr((void *)&game->player.img_path);
-	// if (game->trap.img_path)
-	// 	ft_free_ptr((void *)&game->trap.img_path);
-	// if (game->trap.img)
-	// 	ft_free_ptr((void *)&game->trap.img);
-	// if (game->step.step_str)
-	// 	ft_free_ptr((void *)&game->step.step_str);
 }
