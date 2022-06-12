@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:36:03 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/10 22:08:25 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/12 23:41:32 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	key_hook(int keycode, t_game *game)
 void	get_hooks(t_game *game)
 {
 	mlx_hook(game->win.win_ptr, DestroyNotify, NoEventMask,
-		(void *)&close_win, &game);
+		(void *)&close_win, game);
 	mlx_hook(game->win.win_ptr, KeyPress, KeyPressMask, &key_hook, game);
 	mlx_loop_hook(game->mlx, (void *)&win_render, game);
 }
