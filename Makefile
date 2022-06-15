@@ -4,7 +4,7 @@ RESET		= \033[0m
 
 NAME		=	so_long
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -g
+FLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g 
 MLX			=	mlx/Makefile.gen
 LFT			=	libft/libft.a
 INC			=	-I ./includes -I ./libft -I ./mlx
@@ -23,7 +23,7 @@ SRC			=	src/so_long.c \
 all:		$(MLX) $(LFT) obj $(NAME)
 
 $(NAME):	$(OBJ)
-			@$(CC) $(FLAGS) -o $@ $^ $(LIB) -fsanitize=address -g
+			@$(CC) $(FLAGS) -o $@ $^ $(LIB)
 
 $(MLX):
 			@echo " [ .. ] | Compiling minilibx.."
