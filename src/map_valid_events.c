@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/10 22:17:15 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:24:49 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	map_read(t_game *game)
 	if (fd < 0)
 		error_event("Error\nWhile opening file", game, 1);
 	i = 0;
+	game->map.map_grid = calloc(50, sizeof(char *));
+	if (game->map.map_grid == NULL)
+		error_event("Error\nWhile allocating memory for map", game, 1);
 	while (game->map.map_grid != NULL)
 	{
 		game->map.map_grid[i] = get_next_line(fd);
