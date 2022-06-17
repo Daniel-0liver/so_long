@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:14:36 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/15 23:24:49 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/16 22:21:38 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,19 @@ void	map_is_rectangular(t_game *game)
 		i++;
 	game->map.map_column = i - 1;
 	if (game->map.map_row == game->map.map_column)
-		error_event("Error\nMap Must be Retangular!", game, 0);
+		error_event("Error\nMap Must be Retangular!", game, 1);
 	i = 0;
 	while (game->map.map_grid[i])
 	{
 		if (ft_strlen(game->map.map_grid[i])
 			!= (size_t)(game->map.map_column + 1))
-		{
 			if ((i + 1) != game->map.map_row)
-				error_event("Error\nMap size invalid", game, 0);
-		}
+				error_event("Error\nMap size invalid", game, 1);
 		i++;
 	}
+	if (ft_strlen(game->map.map_grid[game->map.map_row - 1])
+		!= (size_t)game->map.map_column)
+		error_event("Error\nMap size invalid", game, 1);
 }
 
 // Check if the map has some not allowed char

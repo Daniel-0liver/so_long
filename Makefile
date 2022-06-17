@@ -4,12 +4,13 @@ RESET		= \033[0m
 
 NAME		=	so_long
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g 
+FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address -g 
 MLX			=	mlx/Makefile.gen
 LFT			=	libft/libft.a
 INC			=	-I ./includes -I ./libft -I ./mlx
 LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd 
 #-lmlx -framework OpenGL -framework AppKit
+#valgrind --leak-check=full --show-leak-kinds=all -s -q
 OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
 SRC			=	src/so_long.c \
 				src/game_hook_events.c \

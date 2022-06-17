@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/11 02:07:28 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/16 22:38:58 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 void	game_init(t_game *game)
 {
 	map_read(game);
-	path_init(game);
 	map_is_rectangular(game);
+	path_init(game);
+	img_int(game);
+	window_init(game);
+	map_is_closed(game);
 	map_valid_char(game);
 	if (game->exit.num_e != 1)
 		error_event("Error\nJust one exit is allowed", game, 0);
@@ -25,9 +28,6 @@ void	game_init(t_game *game)
 		error_event("Error\nJust one player is allowed", game, 0);
 	if (game->collect.num_c <= 0)
 		error_event("Error\nMust be at least one collectible", game, 0);
-	map_is_closed(game);
-	window_init(game);
-	img_int(game);
 }
 
 //Create a window
@@ -70,7 +70,6 @@ void	path_init(t_game *game)
 // Initialize all the images in the mlx
 void	img_int(t_game *game)
 {
-	player_img_init(game);
 	game->wall.img = mlx_xpm_file_to_image(game->mlx, game->wall.img_path,
 			&game->win.width, &game->win.height);
 	if (!game->wall.img)
@@ -91,6 +90,7 @@ void	img_int(t_game *game)
 			&game->win.width, &game->win.height);
 	if (!game->step.img)
 		error_event("Error while generating step IMG", game, 0);
+	player_img_init(game);
 }
 
 // Initialize and verify player img
