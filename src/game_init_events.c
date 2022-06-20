@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/19 01:43:24 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:16:20 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	game_init(t_game *game)
 {
 	map_read(game);
 	map_is_rectangular(game);
+	window_init(game);
 	path_init(game);
 	img_int(game);
-	window_init(game);
 	map_is_closed(game);
 	map_valid_char(game);
 	if (game->exit.num_e != 1)
@@ -70,6 +70,7 @@ void	path_init(t_game *game)
 // Initialize all the images in the mlx
 void	img_int(t_game *game)
 {
+	player_img_init(game);
 	game->wall.img = mlx_xpm_file_to_image(game->mlx, game->wall.img_path,
 			&game->win.width, &game->win.height);
 	if (!game->wall.img)
@@ -90,7 +91,6 @@ void	img_int(t_game *game)
 			&game->win.width, &game->win.height);
 	if (!game->step.img)
 		error_event("Error while generating step IMG", game, 0);
-	player_img_init(game);
 }
 
 // Initialize and verify player img
