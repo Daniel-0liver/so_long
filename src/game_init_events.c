@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/22 23:56:07 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/23 00:03:04 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	player_img_init(t_game *game)
 
 	i = 0;
 	game->player.img = calloc(3, sizeof(void *));
+	game->trap.img = calloc(2, sizeof(void *));
 	while (i < 3)
 	{
 		game->player.img[i] = mlx_xpm_file_to_image(game->mlx,
@@ -109,7 +110,6 @@ void	player_img_init(t_game *game)
 		i++;
 	}
 	i = 0;
-	game->trap.img = calloc(2, sizeof(void *));
 	while (i < 2)
 	{
 		game->trap.img[i] = mlx_xpm_file_to_image(game->mlx,

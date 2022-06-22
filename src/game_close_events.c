@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:06:57 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/21 00:08:44 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/23 00:04:57 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 void	destroy_images(t_game *game)
 {
-	puts("destroy images begin");
 	if (game->floor.img != NULL)
 		mlx_destroy_image(game->mlx, game->floor.img);
-	puts("destroy images after floor");
 	if (game->wall.img != NULL)
 		mlx_destroy_image(game->mlx, game->wall.img);
-	puts("destroy images after wall");
 	if (game->exit.img != NULL)
 		mlx_destroy_image(game->mlx, game->exit.img);
-	puts("destroy images after exit");
 	if (game->collect.img != NULL)
 		mlx_destroy_image(game->mlx, game->collect.img);
-	puts("destroy images after collect");
 	if (game->step.img != NULL)
 		mlx_destroy_image(game->mlx, game->step.img);
-	puts("destroy images after step");
 	destroy_player_trap_img(game);
-	puts("destroy images after destroy player img");
 }
 
 void	destroy_player_trap_img(t_game *game)
@@ -56,9 +49,7 @@ void	destroy_player_trap_img(t_game *game)
 
 void	close_win(t_game *game)
 {
-	puts("close_game begin");
 	destroy_images(game);
-	puts("close_game after destroy images");
 	if (game->player.img != NULL)
 		ft_free_ptr((void *)&game->player.img);
 	if (game->trap.img != NULL)
