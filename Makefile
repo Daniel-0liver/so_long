@@ -4,7 +4,7 @@ RESET		= \033[0m
 
 NAME		=	so_long
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address -g 
+FLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address -g 
 MLX			=	mlx/Makefile.gen
 LFT			=	libft/libft.a
 INC			=	-I ./includes -I ./libft -I ./mlx

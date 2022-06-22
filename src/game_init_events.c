@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:35:26 by dateixei          #+#    #+#             */
-/*   Updated: 2022/06/21 00:16:20 by dateixei         ###   ########.fr       */
+/*   Updated: 2022/06/22 23:38:28 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	path_init(t_game *game)
 	game->player.img_path[2] = "./textures/slime_3_frame_right_64.xpm";
 	game->trap.img_path[0] = "./textures/fire_1_frame_64.xpm";
 	game->trap.img_path[1] = "./textures/fire_2_frame_64.xpm";
-	game->collect.img_path = "./textures/diamond_64.xpm";
+	game->collect.img_path = "./textures/diamond_6.xpm";
 	game->floor.img_path = "./textures/wooden_wall_64.xpm";
 	game->step.img_path = "./textures/background_steps.xpm";
 	game->exit.img_path = "./textures/stair_wood_64.xpm";
