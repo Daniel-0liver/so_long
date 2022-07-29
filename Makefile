@@ -8,7 +8,7 @@ FLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address
 MLX			=	mlx/Makefile.gen
 LFT			=	libft/libft.a
 INC			=	-I ./includes -I ./libft -I ./mlx
-LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd 
+LIB			=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm
 #-lmlx -framework OpenGL -framework AppKit
 #valgrind --leak-check=full --show-leak-kinds=all
 OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
