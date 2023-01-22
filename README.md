@@ -23,4 +23,6 @@ to any project where it's specified. These are some of them:
   The norminette (as we call the norm at 42) is in python and open source.
   
   Its repository is available at https://github.com/42School/norminette.
+  
+  
 Updates coming soon.
