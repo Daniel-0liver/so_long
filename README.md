@@ -24,5 +24,26 @@ to any project where it's specified. These are some of them:
   
   Its repository is available at https://github.com/42School/norminette.
   
+### How to play
+---
+###### Maps
+The game is able to play any map you want as long as it follow some specific rules:
+* The map has to be a ``.ber`` file.
+* It can only contain some of the following characters:
+
+| Character | Object |
+| - | - |
+| 1 | Wall. |
+| 0 | Empty space. |
+| C | Collectable. |
+| E | Exit. |
+| P | Player starting position. |
+| T | Trap. |
+
+* The map must be a rectangle surrounded by walls ‘1’.
+* It must have at least one exit ‘E’ and one collectable ‘C’. And only one player ‘P’.
+
+See some examples in the ``map_files`` folder of this project.
+  
   
 Updates coming soon.
