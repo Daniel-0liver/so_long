@@ -45,5 +45,4 @@ The game is able to play any map you want as long as it follow some specific rul
 
 See some examples in the ``map_files`` folder of this project.
   
-  
-Updates coming soon.
+
