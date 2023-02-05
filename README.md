@@ -44,5 +44,4 @@ The game is able to play any map you want as long as it follow some specific rul
 * It must have at least one exit ‘E’ and one collectable ‘C’. And only one player ‘P’.
 
 See some examples in the ``map_files`` folder of this project.
-  
 
