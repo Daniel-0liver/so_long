@@ -27,10 +27,68 @@ int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
+static int	close_win_hook(t_game *game);
+static int	key_hook_event(int keycode, t_game *game);
+static int	win_render_hook(t_game *game);
+
+static int	(*hook_close_fn(int (*fn)(t_game *game)))()
+{
+	union
+	{
+		int	(*typed)(t_game *game);
+		int	(*any)();
+	} u;
+
+	u.typed = fn;
+	return (u.any);
+}
+
+static int	(*hook_key_fn(int (*fn)(int keycode, t_game *game)))()
+{
+	union
+	{
+		int	(*typed)(int keycode, t_game *game);
+		int	(*any)();
+	} u;
+
+	u.typed = fn;
+	return (u.any);
+}
+
+static int	(*hook_render_fn(int (*fn)(t_game *game)))()
+{
+	union
+	{
+		int	(*typed)(t_game *game);
+		int	(*any)();
+	} u;
+
+	u.typed = fn;
+	return (u.any);
+}
+
 void	get_hooks(t_game *game)
 {
 	mlx_hook(game->win.win_ptr, DestroyNotify, NoEventMask,
-		(void *)&close_win, game);
-	mlx_hook(game->win.win_ptr, KeyPress, KeyPressMask, &key_hook, game);
-	mlx_loop_hook(game->mlx, (void *)&win_render, game);
+		hook_close_fn(close_win_hook), game);
+	mlx_hook(game->win.win_ptr, KeyPress, KeyPressMask,
+		hook_key_fn(key_hook_event), game);
+	mlx_loop_hook(game->mlx, hook_render_fn(win_render_hook), game);
+}
+
+static int	close_win_hook(t_game *game)
+{
+	close_win(game);
+	return (0);
+}
+
+static int	key_hook_event(int keycode, t_game *game)
+{
+	return (key_hook(keycode, game));
+}
+
+static int	win_render_hook(t_game *game)
+{
+	win_render(game);
+	return (0);
 }
