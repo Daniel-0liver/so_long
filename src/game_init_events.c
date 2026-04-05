@@ -59,6 +59,7 @@ void	path_init(t_game *game)
 	game->wall.img_path = "./textures/wall_64.xpm";
 	game->player.num_moves = 0;
 	game->collect.num_c = 0;
+	game->collect.total_c = 0;
 	game->player.render = 0;
 	game->collect.frame = 0;
 	game->player.num_p = 0;

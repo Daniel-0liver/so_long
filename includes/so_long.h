@@ -65,6 +65,7 @@ typedef struct s_win {
 typedef struct s_collect
 {
 	int			num_c;
+	int			total_c;
 	int			frame;
 	void		*img;
 	char		*img_path;

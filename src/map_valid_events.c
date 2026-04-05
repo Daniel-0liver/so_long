@@ -234,7 +234,10 @@ void	char_valid_event(t_game *game, int i, int j, char c)
 		game->exit.coord.y = (i * game->size_img);
 	}
 	if (c == 'C')
+	{
 		game->collect.num_c += 1;
+		game->collect.total_c += 1;
+	}
 	if (c == 'P')
 	{
 		game->player.num_p += 1;

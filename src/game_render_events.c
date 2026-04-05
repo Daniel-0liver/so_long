@@ -20,6 +20,12 @@ static long	get_time_ms(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
+static void	hud_string_put(t_game *game, int x, int y, char *text)
+{
+	mlx_string_put(game->mlx, game->win.win_ptr, x + 1, y + 1, 0x00111111, text);
+	mlx_string_put(game->mlx, game->win.win_ptr, x, y, 0x00FFFFFF, text);
+}
+
 static void	trap_update(t_game *game)
 {
 	int	index;
@@ -36,7 +42,7 @@ static void	trap_update(t_game *game)
 	player_x = game->player.coord.x / game->size_img;
 	player_y = game->player.coord.y / game->size_img;
 	now_ms = get_time_ms();
-	if (now_ms - last_move_ms < 280)
+	if (now_ms - last_move_ms < 420)
 		return ;
 	last_move_ms = now_ms;
 	index = 0;
@@ -116,16 +122,20 @@ void	player_render(t_game *game)
 void	exit_render(t_game *game)
 {
 	char	hud[64];
+	int	collected;
 
 	if (game->collect.num_c == 0)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->exit.img,
 			game->exit.coord.x, game->exit.coord.y);
 	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->step.img,
 		0, 0);
+	collected = game->collect.total_c - game->collect.num_c;
 	snprintf(hud, sizeof(hud), "Moves: %d", game->player.num_moves);
-	mlx_string_put(game->mlx, game->win.win_ptr, 20, 24, 0x000000FF, hud);
-	snprintf(hud, sizeof(hud), "Collect left: %d", game->collect.num_c);
-	mlx_string_put(game->mlx, game->win.win_ptr, 20, 46, 0x000000FF, hud);
+	hud_string_put(game, 20, 24, hud);
+	snprintf(hud, sizeof(hud), "Gems: %d/%d", collected, game->collect.total_c);
+	hud_string_put(game, 20, 46, hud);
+	snprintf(hud, sizeof(hud), "Remaining: %d", game->collect.num_c);
+	hud_string_put(game, 20, 68, hud);
 }
 
 void	trap_render(t_game *game, int i, int j)
