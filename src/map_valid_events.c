@@ -12,6 +12,87 @@
 
 #include "../includes/so_long.h"
 
+static void	flood_fill(char **grid, int row_max, int col_max, t_coord pos)
+{
+	if (pos.x < 0 || pos.y < 0 || pos.y >= row_max || pos.x >= col_max)
+		return ;
+	if (grid[pos.y][pos.x] == '1' || grid[pos.y][pos.x] == 'V'
+		|| grid[pos.y][pos.x] == 'T')
+		return ;
+	grid[pos.y][pos.x] = 'V';
+	flood_fill(grid, row_max, col_max, (t_coord){pos.x + 1, pos.y});
+	flood_fill(grid, row_max, col_max, (t_coord){pos.x - 1, pos.y});
+	flood_fill(grid, row_max, col_max, (t_coord){pos.x, pos.y + 1});
+	flood_fill(grid, row_max, col_max, (t_coord){pos.x, pos.y - 1});
+}
+
+static char	**copy_map_grid(t_game *game)
+{
+	char	**copy;
+	int		row;
+	int		col;
+
+	copy = calloc(game->map.map_row + 1, sizeof(char *));
+	if (!copy)
+		error_event("Error\nWhile allocating playable map", game, 0);
+	row = 0;
+	while (row < game->map.map_row)
+	{
+		copy[row] = calloc(game->map.map_column + 1, sizeof(char));
+		if (!copy[row])
+			error_event("Error\nWhile allocating playable map", game, 0);
+		col = 0;
+		while (col < game->map.map_column)
+		{
+			copy[row][col] = game->map.map_grid[row][col];
+			col++;
+		}
+		row++;
+	}
+	return (copy);
+}
+
+static void	free_map_copy(char **grid)
+{
+	int	row;
+
+	row = 0;
+	while (grid[row])
+	{
+		ft_free_ptr((void *)&grid[row]);
+		row++;
+	}
+	ft_free_ptr((void *)&grid);
+}
+
+void	map_is_playable(t_game *game)
+{
+	char	**grid_copy;
+	int		row;
+	int		col;
+
+	grid_copy = copy_map_grid(game);
+	flood_fill(grid_copy, game->map.map_row, game->map.map_column,
+		(t_coord){game->player.coord.x / game->size_img,
+		game->player.coord.y / game->size_img});
+	row = 0;
+	while (row < game->map.map_row)
+	{
+		col = 0;
+		while (col < game->map.map_column)
+		{
+			if (grid_copy[row][col] == 'C' || grid_copy[row][col] == 'E')
+			{
+				free_map_copy(grid_copy);
+				error_event("Error\nMap is not playable", game, 0);
+			}
+			col++;
+		}
+		row++;
+	}
+	free_map_copy(grid_copy);
+}
+
 // Read the map file and generate a matrix with the lines of the file
 void	map_read(t_game *game)
 {
@@ -97,8 +178,10 @@ void	map_is_closed(t_game *game)
 {
 	int	i;
 	int	j;
+	int	k;
 
 	i = 0;
+	game->trap.num_t = 0;
 	while (i < game->map.map_row)
 	{
 		j = 0;
@@ -112,6 +195,30 @@ void	map_is_closed(t_game *game)
 			if ((j == 0 || j == (game->map.map_column - 1))
 				&& game->map.map_grid[i][j] != '1')
 				error_event("Error\nMap must be surrounded by walls", game, 0);
+			j++;
+		}
+		i++;
+	}
+	if (game->trap.num_t == 0)
+		return ;
+	game->trap.coord = calloc(game->trap.num_t, sizeof(t_coord));
+	game->trap.dir = calloc(game->trap.num_t, sizeof(int));
+	if (!game->trap.coord || !game->trap.dir)
+		error_event("Error\nWhile allocating memory for traps", game, 0);
+	k = 0;
+	i = 0;
+	while (i < game->map.map_row)
+	{
+		j = 0;
+		while (j < game->map.map_column)
+		{
+			if (game->map.map_grid[i][j] == 'T')
+			{
+				game->trap.coord[k].x = j;
+				game->trap.coord[k].y = i;
+				game->trap.dir[k] = 1;
+				k++;
+			}
 			j++;
 		}
 		i++;
@@ -133,5 +240,6 @@ void	char_valid_event(t_game *game, int i, int j, char c)
 		game->player.num_p += 1;
 		game->player.coord.x = (j * game->size_img);
 		game->player.coord.y = (i * game->size_img);
+		game->map.map_grid[i][j] = '0';
 	}
 }

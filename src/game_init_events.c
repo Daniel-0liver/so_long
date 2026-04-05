@@ -22,6 +22,7 @@ void	game_init(t_game *game)
 	img_int(game);
 	map_is_closed(game);
 	map_valid_char(game);
+	map_is_playable(game);
 	if (game->exit.num_e != 1)
 		error_event("Error\nJust one exit is allowed", game, 0);
 	if (game->player.num_p != 1)
@@ -64,6 +65,7 @@ void	path_init(t_game *game)
 	game->exit.num_e = 0;
 	game->trap.num_t = 0;
 	game->trap.frame = 0;
+	game->trap.move_tick = 0;
 	game->frames = 0;
 }
 

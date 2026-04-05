@@ -30,7 +30,7 @@ void	player_move_right(t_game *game)
 	game->player.coord.x += game->size_img;
 	game->player.num_moves++;
 	if (next_posit == 'E' && game->collect.num_c == 0)
-		error_event("You won, congratulations!!!", game, 0);
+		next_level(game);
 	if (next_posit == 'T')
 		error_event("You missed!!!", game, 0);
 }
@@ -53,7 +53,7 @@ void	player_move_left(t_game *game)
 	game->player.coord.x -= game->size_img;
 	game->player.num_moves++;
 	if (next_posit == 'E' && game->collect.num_c == 0)
-		error_event("You won, congratulations!!!", game, 0);
+		next_level(game);
 	if (next_posit == 'T')
 		error_event("You missed!!!", game, 0);
 }
@@ -75,7 +75,7 @@ void	player_move_up(t_game *game)
 	game->player.coord.y -= game->size_img;
 	game->player.num_moves++;
 	if (next_posit == 'E' && game->collect.num_c == 0)
-		error_event("You won, congratulations!!!", game, 0);
+		next_level(game);
 	if (next_posit == 'T')
 		error_event("You missed!!!", game, 0);
 }
@@ -97,7 +97,7 @@ void	player_move_down(t_game *game)
 	game->player.coord.y += game->size_img;
 	game->player.num_moves++;
 	if (next_posit == 'E' && game->collect.num_c == 0)
-		error_event("You won, congratulations!!!", game, 0);
+		next_level(game);
 	if (next_posit == 'T')
 		error_event("You missed!!!", game, 0);
 }

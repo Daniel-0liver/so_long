@@ -12,6 +12,58 @@
 
 #include "../includes/so_long.h"
 
+static long	get_time_ms(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+static void	trap_update(t_game *game)
+{
+	int	index;
+	int	next_x;
+	int	next_y;
+	int	player_x;
+	int	player_y;
+	char	next_tile;
+	long	now_ms;
+	static long	last_move_ms;
+
+	if (game->trap.num_t <= 0)
+		return ;
+	player_x = game->player.coord.x / game->size_img;
+	player_y = game->player.coord.y / game->size_img;
+	now_ms = get_time_ms();
+	if (now_ms - last_move_ms < 280)
+		return ;
+	last_move_ms = now_ms;
+	index = 0;
+	while (index < game->trap.num_t)
+	{
+		next_y = game->trap.coord[index].y;
+		next_x = game->trap.coord[index].x + game->trap.dir[index];
+		next_tile = game->map.map_grid[next_y][next_x];
+		if (next_tile != '0')
+		{
+			game->trap.dir[index] *= -1;
+			next_x = game->trap.coord[index].x + game->trap.dir[index];
+			next_tile = game->map.map_grid[next_y][next_x];
+		}
+		if (next_tile == '0')
+		{
+			game->map.map_grid[game->trap.coord[index].y]
+			[game->trap.coord[index].x] = '0';
+			if (next_x == player_x && next_y == player_y)
+				error_event("You missed!!!", game, 0);
+			game->trap.coord[index].x = next_x;
+			game->map.map_grid[next_y][next_x] = 'T';
+		}
+		index++;
+	}
+}
+
 void	map_render(t_game *game)
 {
 	int	i;
@@ -63,15 +115,17 @@ void	player_render(t_game *game)
 
 void	exit_render(t_game *game)
 {
+	char	hud[64];
+
 	if (game->collect.num_c == 0)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->exit.img,
 			game->exit.coord.x, game->exit.coord.y);
 	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->step.img,
 		0, 0);
-	game->step.step_str = ft_itoa(game->player.num_moves);
-	mlx_string_put(game->mlx, game->win.win_ptr, 25, 34,
-		0x000000FF, game->step.step_str);
-	ft_free_ptr((void *)&game->step.step_str);
+	snprintf(hud, sizeof(hud), "Moves: %d", game->player.num_moves);
+	mlx_string_put(game->mlx, game->win.win_ptr, 20, 24, 0x000000FF, hud);
+	snprintf(hud, sizeof(hud), "Collect left: %d", game->collect.num_c);
+	mlx_string_put(game->mlx, game->win.win_ptr, 20, 46, 0x000000FF, hud);
 }
 
 void	trap_render(t_game *game, int i, int j)
@@ -90,6 +144,7 @@ void	trap_render(t_game *game, int i, int j)
 
 void	win_render(t_game *game)
 {
+	trap_update(game);
 	map_render(game);
 	player_render(game);
 	exit_render(game);
