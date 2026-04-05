@@ -125,12 +125,33 @@ void	exit_render(t_game *game)
 {
 	char	hud[64];
 	int	collected;
+	long	now_ms;
+	long	frame_ms;
+	static long	fps_window_start_ms;
+	static long	last_frame_ms;
+	static int	fps_frames;
+	static int	fps_value;
 
 	if (game->collect.num_c == 0)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->exit.img,
 			game->exit.coord.x, game->exit.coord.y);
 	mlx_put_image_to_window(game->mlx, game->win.win_ptr, game->step.img,
 		0, 0);
+	now_ms = get_time_ms();
+	if (last_frame_ms == 0)
+		frame_ms = 0;
+	else
+		frame_ms = now_ms - last_frame_ms;
+	last_frame_ms = now_ms;
+	if (fps_window_start_ms == 0)
+		fps_window_start_ms = now_ms;
+	fps_frames++;
+	if (now_ms - fps_window_start_ms >= 1000)
+	{
+		fps_value = fps_frames;
+		fps_frames = 0;
+		fps_window_start_ms = now_ms;
+	}
 	collected = game->collect.total_c - game->collect.num_c;
 	snprintf(hud, sizeof(hud), "Moves: %d", game->player.num_moves);
 	hud_string_put(game, 20, 24, hud);
@@ -138,6 +159,10 @@ void	exit_render(t_game *game)
 	hud_string_put(game, 20, 46, hud);
 	snprintf(hud, sizeof(hud), "Remaining: %d", game->collect.num_c);
 	hud_string_put(game, 20, 68, hud);
+	snprintf(hud, sizeof(hud), "FPS: %d", fps_value);
+	hud_string_put(game, 20, 90, hud);
+	snprintf(hud, sizeof(hud), "Frame: %ld ms", frame_ms);
+	hud_string_put(game, 20, 112, hud);
 }
 
 void	trap_render(t_game *game, int i, int j)
