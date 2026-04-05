@@ -101,22 +101,24 @@ void	map_render(t_game *game)
 
 void	player_render(t_game *game)
 {
-	if ((game->frames < 150) || (game->frames > 599 && game->frames < 750))
+	long			now_ms;
+	static long	last_anim_ms;
+	static int	frame_idx;
+
+	now_ms = get_time_ms();
+	if (now_ms - last_anim_ms >= 150)
+	{
+		frame_idx = (frame_idx + 1) % 2;
+		last_anim_ms = now_ms;
+	}
+	if (frame_idx == 0)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr,
 			game->player.img[0],
 			game->player.coord.x, game->player.coord.y);
-	if ((game->frames > 149 && game->frames < 300) || (game->frames
-			> 449 && game->frames < 600))
+	if (frame_idx == 1)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr,
 			game->player.img[1],
 			game->player.coord.x, game->player.coord.y);
-	if (game->frames > 299 && game->frames < 450)
-		mlx_put_image_to_window(game->mlx, game->win.win_ptr,
-			game->player.img[1],
-			game->player.coord.x, game->player.coord.y);
-	game->frames++;
-	if (game->frames >= 750)
-		game->frames = 0;
 }
 
 void	exit_render(t_game *game)
@@ -140,16 +142,23 @@ void	exit_render(t_game *game)
 
 void	trap_render(t_game *game, int i, int j)
 {
-	if (game->trap.frame < 200 * game->trap.num_t)
+	long			now_ms;
+	static long	last_anim_ms;
+	static int	frame_idx;
+
+	now_ms = get_time_ms();
+	if (now_ms - last_anim_ms >= 180)
+	{
+		frame_idx = (frame_idx + 1) % 2;
+		last_anim_ms = now_ms;
+	}
+	if (frame_idx == 0)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr,
 			game->trap.img[0], (game->size_img * j),
 			(game->size_img * i));
-	if (game->trap.frame > 200 * game->trap.num_t)
+	if (frame_idx == 1)
 		mlx_put_image_to_window(game->mlx, game->win.win_ptr,
 			game->trap.img[1], (game->size_img * j), (game->size_img * i));
-	game->trap.frame++;
-	if (game->trap.frame >= 400 * game->trap.num_t)
-		game->trap.frame = 0;
 }
 
 void	win_render(t_game *game)
